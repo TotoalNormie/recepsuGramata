@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS users
+(
+	ID int PRIMARY KEY AUTO_INCREMENT,
+	identifier CHAR(64) NOT NULL UNIQUE,
+	username VARCHAR(32) NOT NULL UNIQUE,
+	passhash CHAR(60) NOT NULL, /* use bcrypt*/
+);
+
+CREATE TABLE IF NOT EXISTS recipes(
+	ID int PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(32) NOT NULL,
+	description VARCHAR(500),
+	image_url VARCHAR(255) NOT NULL,
+	views int NOT NULL,
+	owner int NOT NULL,
+
+	FOREIGN KEY(owner), REFERENCES users(ID)
+);
+
+CREATE TABLE IF NOT EXISTS ingredients(
+	ID int PRIMARY KEY AUTO_INCREMENT,
+	amount int NOT NULL,
+	title VARCHAR(32) NOT NULL,
+	recipe_id int NOT NULL,
+
+	FOREIGN KEY(recipe_id) REFERENCES recipe(ID)
+);
