@@ -46,7 +46,7 @@
 
 			if(isset($_POST["id"]) && (isset($_POST["title"]) || isset($_POST["description"]) || isset($_POST["image_url"]) || isset($_POST["ingredient_json"])))
 			{
-				$ownership = $DB->IsRecipeOwner($_POST["id"], $user_session->user_id)
+				$ownership = $DB->IsRecipeOwner($_POST["id"], $user_session->user_id);
 				if($ownership)
 				{
 					$DB->UpdateRecipeByID($_POST["id"], $_POST["title"] ?? null, $_POST["description"] ?? null, $_POST["image_url"] ?? null, $_POST["ingredient_json"] ?? null);
@@ -106,7 +106,7 @@
 			$DeleteData = GetAllRequestData();
 			if(isset($DeleteData["id"]))
 			{
-				$ownership = $DB->IsRecipeOwner($DeleteData["id"], $user_session->user_id)
+				$ownership = $DB->IsRecipeOwner($DeleteData["id"], $user_session->user_id);
 				if($ownership)
 				{
 					$DB->DeleteRecipeByID($DeleteData["id"]);
