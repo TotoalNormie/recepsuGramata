@@ -13,7 +13,7 @@
 				$user_id = GenerateUserID($_POST["user"], $_POST["pass"]);
 				if($DB->ValidUserLogin($_POST["user"], $user_id))
 				{
-					header("Location: /index.php");
+					header("Location: /");
 
 					$expire_time = time() + 60 * 60 * 10; // 10 hours
 					setcookie("token",

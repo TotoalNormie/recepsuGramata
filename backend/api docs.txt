@@ -9,14 +9,14 @@ POST /login.php
 user
 pass
 
-atgriez session token, kā cookie "token", ja user un pass nepieder nevienam kontam, atgriež "Failure" "Bad Login"
+atgriez session token, kā cookie "token" un redirekto uz indeksu. ja user un pass nepieder nevienam kontam, atgriež "Failure" "Bad Login"
 
 register
 POST /register.php
 user
 pass
 
-atgriez session token, kā cookie "token", ja user jau pieder kādam kontam, atgriež "Failure" "Bad Username"
+atgriez session token, kā cookie "token" un redirekto uz indeksu. ja user jau pieder kādam kontam, atgriež "Failure" "Bad Username"
 
 
 get recipes

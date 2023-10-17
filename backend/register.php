@@ -15,7 +15,7 @@
 					$user_id = GenerateUserID($_POST["user"], $_POST["pass"]);
 					$DB->RegisterUser($_POST["user"], $user_id); // the only way this could fail is by raising an exception
 
-					header("Location: /index.php");
+					header("Location: /");
 										
 					$expire_time = time() + 60 * 60 * 10; // 10 hours
 					setcookie("token",
