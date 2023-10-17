@@ -1,8 +1,8 @@
 Katrs requests ir atbildets ar JSON objektu
 Visiem objektiem ir lauki “status” un “message”
+Status var būt vainu “Success” vai “Failure”
 Ja tiek atgriezti dati tie atrodas papildus laukā “data”
 Example: {“status”: “Success”, “message”: ”Recipes Retrieved Succesfully”, “data”: [...]}
-Status var būt vainu “Success” vai “Failure”
 
 login
 POST /login.php
