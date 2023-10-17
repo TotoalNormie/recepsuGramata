@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS recipes(
 	description VARCHAR(500),
 	image_url VARCHAR(255) NOT NULL,
 	ingredient_json VARCHAR(500) NOT NULL,
-	views int NOT NULL,
+	views int DEFAULT 0,
 	owner int NOT NULL,
 
 	FOREIGN KEY(owner), REFERENCES users(ID)
