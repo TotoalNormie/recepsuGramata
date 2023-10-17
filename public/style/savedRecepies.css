@@ -1,0 +1,9 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
+.recepie {
+    border-radius: 1rem;
+    
+}
