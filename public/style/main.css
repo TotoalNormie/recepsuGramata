@@ -8,6 +8,7 @@ body {
     min-height: 100svh;
     grid-template-columns: 20rem 1fr;
     grid-template-rows: 5rem 1fr;
+    color: #2C3333;
     background-color: #CBE4DE;
 
     & header {
@@ -30,5 +31,10 @@ header{
 
 .search {
     background-color: #2E4F4F;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
 }
 
