@@ -7,7 +7,7 @@
 
 		public function __construct()
 		{
-			$this->DB = new mysqli("localhost", "root", "", "recipes");
+			$this->DB = new mysqli("localhost", "root", "", "recipe_database");
 		}
 
 		public function GetConnectionError()
@@ -28,7 +28,7 @@
 		{
 			$result = $this->DB->query("SELECT ID, title, image_url, views FROM recipes");
 			if($result->num_rows<=0)
-				return false;
+				return null;
 
 			return $result->fetch_all(MYSQLI_ASSOC);
 		}
@@ -42,7 +42,7 @@
 
 			$result = $stmt->get_result();
 			if($result->num_rows<=0)
-				return false;
+				return null;
 
 			return $result->fetch_array(MYSQLI_ASSOC);
 		}
@@ -73,8 +73,9 @@
 
 		public function IsRecipeOwner($recipe_id, $user_identifier)
 		{
-			$stmt = $this->DB->prepare("SELECT users.identifier FROM recipes WHERE recipes.ID=?
+			$stmt = $this->DB->prepare("SELECT users.identifier FROM recipes
 			                            INNER JOIN users ON recipes.owner = users.ID
+			                            WHERE recipes.ID=?
 			                            LIMIT 1");
 			
 			$stmt->bind_param("i", $recipe_id);
@@ -111,7 +112,7 @@
 
 		public function ValidUserLogin($username, $identifier)
 		{
-			$stmt = $this->DB->prepare("SELECT ID FROM users WHERE identifier=?, username=?");
+			$stmt = $this->DB->prepare("SELECT ID FROM users WHERE identifier=? AND username=?");
 			
 			$stmt->bind_param("ss", $identifier, $username);
 			$stmt->execute();
@@ -132,7 +133,7 @@
 
 			$result = $stmt->get_result();
 			if($result->num_rows<=0)
-				return false;
+				return null;
 
 			return $result->fetch_array(MYSQLI_NUM)[0];
 		}

@@ -3,7 +3,7 @@
 	$user_session = HandleSessionSoft();
 
 	require_once("database_interface.php");
-	require_once("utility.php")
+	require_once("utility.php");
 
 	$request_method = $_SERVER["REQUEST_METHOD"];
 	$DB = new RecipeDatabase();
@@ -11,13 +11,15 @@
 	if($request_method === "GET")
 	{
 		try
-		{			
-			if(isset($request_method["id"]))
+		{
+			$GetData = GetAllRequestData();
+
+			if(isset($GetData["id"]))
 			{
-				$recipe = $DB->GetRecipeByID($_REQUEST["id"]);
+				$recipe = $DB->GetRecipeByID($GetData["id"]);
 				if($recipe)
 				{
-					$DB->IncrementViewsByID($_REQUEST["id"]);
+					$DB->IncrementViewsByID($GetData["id"]);
 					exit(CreateResponse("Success", "Recipe Retrieved Succesfully", "data", $recipe));
 				}
 				else
@@ -32,7 +34,7 @@
 		}
 		catch(Exception $e)
 		{
-			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->string));
+			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->getMessage()));
 		}
 	}
 	else if($request_method === "POST") // update recipe
@@ -42,11 +44,11 @@
 			if($user_session === false)
 				exit(CreateResponse("Failure", "Please Authenticate Yourself"));
 
-			if(isset($_REQUEST["id"]) && (isset($_REQUEST["title"]) || isset($_REQUEST["description"]) || isset($_REQUEST["image_url"]) || isset($_REQUEST["ingredient_json"])))
+			if(isset($_POST["id"]) && (isset($_POST["title"]) || isset($_POST["description"]) || isset($_POST["image_url"]) || isset($_POST["ingredient_json"])))
 			{
-				if($DB->IsRecipeOwner($_REQUEST["id"], $user_session->user_id))
+				if($DB->IsRecipeOwner($_POST["id"], $user_session->user_id))
 				{
-					$DB->UpdateRecipeByID($_REQUEST["id"], $_REQUEST["title"] ?? null, $_REQUEST["description"] ?? null, $_REQUEST["image_url"] ?? null, $_REQUEST["ingredient_json"] ?? null);
+					$DB->UpdateRecipeByID($_POST["id"], $_POST["title"] ?? null, $_POST["description"] ?? null, $_POST["image_url"] ?? null, $_POST["ingredient_json"] ?? null);
 					exit(CreateResponse("Success", "Recipe Updated Succesfully"));
 				}
 				else
@@ -61,7 +63,7 @@
 		}
 		catch(Exception $e)
 		{
-			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->string));
+			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->getMessage()));
 		}
 	}
 	else if($request_method === "PUT") // create recipe
@@ -72,11 +74,11 @@
 				exit(CreateResponse("Failure", "Please Authenticate Yourself"));
 			
 
-			$PutData = GetPUT();
+			$PutData = GetAllRequestData();
 
-			if(isset($PutData["id"]) && isset($PutData["title"]) && isset($PutData["description"]) && isset($PutData["image_url"]) && isset($PutData["ingredient_json"]))
+			if(isset($PutData["title"]) && isset($PutData["description"]) && isset($PutData["image_url"]) && isset($PutData["ingredient_json"]))
 			{
-				$DB->CreateRecipe($PutData["id"], $PutData["title"], $PutData["description"], $PutData["image_url"], $PutData["ingredient_json"], $user_session->user_id);
+				$DB->CreateRecipe($PutData["title"], $PutData["description"], $PutData["image_url"], $PutData["ingredient_json"], $user_session->user_id);
 				exit(CreateResponse("Success", "Recipe Created Succesfully"));
 			}
 			else
@@ -86,7 +88,7 @@
 		}
 		catch(Exception $e)
 		{
-			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->string));
+			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->getMessage()));
 		}
 	}
 	else if($request_method === "DELETE") // delete recipe
@@ -96,11 +98,12 @@
 			if($user_session === false)
 				exit(CreateResponse("Failure", "Please Authenticate Yourself"));
 
-			if(isset($_REQUEST["id"]))
+			$DeleteData = GetAllRequestData();
+			if(isset($DeleteData["id"]))
 			{
-				if($DB->IsRecipeOwner($_REQUEST["id"], $user_session->user_id))
+				if($DB->IsRecipeOwner($DeleteData["id"], $user_session->user_id))
 				{
-					$DB->DeleteRecipeByID($_REQUEST["id"]);
+					$DB->DeleteRecipeByID($DeleteData["id"]);
 					exit(CreateResponse("Success", "Recipe Deleted Succesfully"));
 				}
 				else
@@ -115,7 +118,7 @@
 		}
 		catch(Exception $e)
 		{
-			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->string));
+			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->getMessage()));
 		}
 	}
 	else

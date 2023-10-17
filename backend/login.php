@@ -1,6 +1,6 @@
 <?php
-	require_once("session_handler.php");
-	require_once("recipe");
+	require_once("session_library.php");
+	require_once("database_interface.php");
 	require_once("utility.php");
 
 	if($_SERVER["REQUEST_METHOD"] === "POST")
@@ -22,13 +22,13 @@
 							$expire_time,
 							SessionAuthority::USER
 						))->ToToken(),
-					$expire_time);
+					$expire_time); // idk why its forcing me to specify the "/"
 
 					exit(CreateResponse("Success", "Session Created Succesfully"));
 				}
 				else
 				{
-					exit("Failure", "Bad Login");
+					exit(CreateResponse("Failure", "Bad Login", "+", $_POST["user"] . "\n" . $user_id));
 				}
 				
 			}
@@ -39,7 +39,7 @@
 		}
 		catch(Exception $e)
 		{
-			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->string));
+			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->getMessage()));
 		}
 	}
 	else

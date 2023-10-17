@@ -50,7 +50,7 @@
 	{
 		global $___user_id_salt;
 
-		$password = password_hash($password, PASSWORD_BCRYPT);
+		//$password = password_hash($password, PASSWORD_BCRYPT);
 		return hash("sha256", $username . $___user_id_salt . $password);
 	}
 
@@ -142,6 +142,7 @@
 			if(!($session = Session::FromToken($_COOKIE["token"])))
 				setcookie("token", "", 1);
 
+		
 		return $session;
 	}
 ?>

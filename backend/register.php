@@ -1,6 +1,6 @@
 <?php
-	require_once("session_handler.php");
-	require_once("recipe");
+	require_once("session_library.php");
+	require_once("database_interface.php");
 	require_once("utility.php");
 
 	if($_SERVER["REQUEST_METHOD"] === "POST")
@@ -10,7 +10,8 @@
 			if(isset($_POST["user"]) && isset($_POST["pass"]))
 			{
 				$DB = new RecipeDatabase();
-				if($DB->UserExists($_POST["user"]))
+				$user_id = GenerateUserID($_POST["user"], $_POST["pass"]);
+				if(!$DB->UserExists($_POST["user"]))
 				{
 					$user_id = GenerateUserID($_POST["user"], $_POST["pass"]);
 					$DB->RegisterUser($_POST["user"], $user_id); // the only way this could fail is by raising an exception
@@ -30,7 +31,7 @@
 				}
 				else
 				{
-					exit("Failure", "Bad Username");
+					exit(CreateResponse("Failure", "Bad Username"));
 				}
 				
 			}
@@ -41,7 +42,7 @@
 		}
 		catch(Exception $e)
 		{
-			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->string));
+			exit(CreateResponse("Failure", "Something Went Wrong - Server Side Error", "error", $e->getMessage()));
 		}
 	}
 	else
