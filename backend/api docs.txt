@@ -1,0 +1,56 @@
+Katrs requests ir atbildets ar JSON objektu
+Visiem objektiem ir lauki “status” un “message”
+Ja tiek atgriezti dati tie atrodas papildus laukā “data”
+Example: {“status”: “Success”, “message”: ”Recipes Retrieved Succesfully”, “data”: [...]}
+Status var būt vainu “Success” vai “Failure”
+
+login
+POST /login.php
+user
+pass
+
+atgriez session token, kā cookie "token" un redirekto uz indeksu. ja user un pass nepieder nevienam kontam, atgriež "Failure" "Bad Login"
+
+register
+POST /register.php
+user
+pass
+
+atgriez session token, kā cookie "token" un redirekto uz indeksu. ja user jau pieder kādam kontam, atgriež "Failure" "Bad Username"
+
+
+get recipes
+GET /recipes.php
+id - recipe id, ja nav atgriez visus
+ja visi, objektu masivs ar laukiem:
+	id
+	title
+	image_url
+	views
+ja viens, objekts ar laukiem:
+	title
+	description
+	image_url
+	views
+	ingredient_json
+
+update recipe
+POST /recipes.php
+id - recipe id
+title
+description
+image_url
+ingredient_json
+^ id un vismaz vienam laukam ir jabūt
+
+create recipe
+PUT /recipes.php
+id - recipe id
+title
+description
+image_url
+ingredient_json
+
+delete recipe
+DELETE /recipes.php
+id - recipe id

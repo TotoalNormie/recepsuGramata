@@ -50,6 +50,7 @@
 	{
 		global $___user_id_salt;
 
+		//$password = password_hash($password, PASSWORD_BCRYPT);
 		return hash("sha256", $username . $___user_id_salt . $password);
 	}
 
@@ -107,23 +108,6 @@
 
 	// generic session handling
 
-	function IsLoggedIn()
-	{
-		if(isset($_COOKIE["token"]))
-		{
-			if(($session = Session::FromToken($_COOKIE["token"])) === false)
-			{
-				setcookie("token", "", 1);
-				return false;
-			}
-			else
-				return $session;
-		}
-		else
-			return false;
-
-	}
-
 	function HandleSession()
 	{
 		$failureMessage = null;
@@ -148,6 +132,17 @@
 			exit(CreateResponse("Failure", $failureMessage));
 		}
 
+		return $session;
+	}
+
+	function HandleSessionSoft()
+	{
+		$session = false;
+		if(isset($_COOKIE["token"]))
+			if(!($session = Session::FromToken($_COOKIE["token"])))
+				setcookie("token", "", 1);
+
+		
 		return $session;
 	}
 ?>

@@ -31,7 +31,7 @@
 		return false;
 	}
 
-	function GetPUT()
+	function GetAllRequestData()
 	{
 		$out = '';
 		mb_parse_str(file_get_contents("php://input"), $out);

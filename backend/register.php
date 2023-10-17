@@ -11,10 +11,13 @@
 			{
 				$DB = new RecipeDatabase();
 				$user_id = GenerateUserID($_POST["user"], $_POST["pass"]);
-				if($DB->ValidUserLogin($_POST["user"], $user_id))
+				if(!$DB->UserExists($_POST["user"]))
 				{
-					header("Location: /");
+					$user_id = GenerateUserID($_POST["user"], $_POST["pass"]);
+					$DB->RegisterUser($_POST["user"], $user_id); // the only way this could fail is by raising an exception
 
+					header("Location: /");
+										
 					$expire_time = time() + 60 * 60 * 10; // 10 hours
 					setcookie("token",
 						(new Session(
@@ -22,13 +25,13 @@
 							$expire_time,
 							SessionAuthority::USER
 						))->ToToken(),
-					$expire_time); // idk why its forcing me to specify the "/"
+					$expire_time);
 
-					exit(CreateResponse("Success", "Session Created Succesfully"));
+					exit(CreateResponse("Success", "Account Registered Succesfully"));
 				}
 				else
 				{
-					exit(CreateResponse("Failure", "Bad Login", "+", $_POST["user"] . "\n" . $user_id));
+					exit(CreateResponse("Failure", "Bad Username"));
 				}
 				
 			}
