@@ -22,13 +22,13 @@
 							$expire_time,
 							SessionAuthority::USER
 						))->ToToken(),
-					$expire_time); // idk why its forcing me to specify the "/"
+					$expire_time);
 
 					exit(CreateResponse("Success", "Session Created Succesfully"));
 				}
 				else
 				{
-					exit(CreateResponse("Failure", "Bad Login", "+", $_POST["user"] . "\n" . $user_id));
+					exit(CreateResponse("Failure", "Bad Login"));
 				}
 				
 			}

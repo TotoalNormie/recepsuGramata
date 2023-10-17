@@ -14,7 +14,7 @@
 				if(!$DB->UserExists($_POST["user"]))
 				{
 					$user_id = GenerateUserID($_POST["user"], $_POST["pass"]);
-					$DB->RegisterUser($_POST["user"], $user_id); // the only way this could fail is by raising an exception
+					$DB->RegisterUser($_POST["user"], $user_id); // if this fails an exception will be raised
 
 					header("Location: /");
 										
