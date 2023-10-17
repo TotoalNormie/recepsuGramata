@@ -83,7 +83,7 @@
 
 			$result = $stmt->get_result();
 			if($result->num_rows<=0)
-				return false;
+				return null;
 
 			return $result->fetch_array(MYSQLI_NUM)[0] == $user_identifier;
 		}
