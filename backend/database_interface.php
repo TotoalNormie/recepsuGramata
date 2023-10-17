@@ -57,7 +57,7 @@
 
 		public function UpdateRecipeByID($id, $title, $description, $image_url, $ingredient_json)
 		{
-			$stmt = $this->DB->prepare("UPDATE recipes SET title=COALESCE(?, title), description=?, image_url=?, ingredient_json=? WHERE ID=? LIMIT 1");
+			$stmt = $this->DB->prepare("UPDATE recipes SET title=COALESCE(?, title), description=COALESCE(?, description), image_url=COALESCE(?, image_url), ingredient_json=COALESCE(?, ingredient_json) WHERE ID=? LIMIT 1");
 			
 			$stmt->bind_param("ssssi", $title, $description, $image_url, $ingredient_json, $id);
 			$stmt->execute();
@@ -87,15 +87,11 @@
 			return $result->fetch_array(MYSQLI_NUM)[0] == $user_identifier;
 		}
 
-		public function RegisterUser($username, $password)
+		public function RegisterUser($username, $identifier)
 		{
-			$stmt = $this->DB->prepare("INSERT INTO users(identifier, username, passhash) VALUES(?, ?, ?)");
-			
-			// these have to be references
-			$passhash = password_hash($password,  PASSWORD_BCRYPT);
-			$identifier = GenerateUserID($username, $passhash); 
+			$stmt = $this->DB->prepare("INSERT INTO users(identifier, username) VALUES(?, ?)");
 
-			$stmt->bind_param("sss", $identifier, $username, $passhash);
+			$stmt->bind_param("ss", $identifier, $username);
 			$stmt->execute();
 		}
 
@@ -113,19 +109,18 @@
 				return true;
 		}
 
-		public function GetUserIdentifier($username, $password)
+		public function ValidUserLogin($username, $identifier)
 		{
-			$stmt = $this->DB->prepare("SELECT identifier FROM users WHERE username=? AND passhash=?");
+			$stmt = $this->DB->prepare("SELECT ID FROM users WHERE identifier=?, username=?");
 			
-			$passhash = password_hash($password,  PASSWORD_BCRYPT);
-			$stmt->bind_param("ss", $username, $passhash);
+			$stmt->bind_param("ss", $identifier, $username);
 			$stmt->execute();
 
 			$result = $stmt->get_result();
 			if($result->num_rows<=0)
 				return false;
-
-			return $result->fetch_array(MYSQLI_NUM)[0];
+			else
+				return true;
 		}		
 
 		public function GetUserDBID($user_identifier)

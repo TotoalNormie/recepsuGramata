@@ -10,11 +10,13 @@
 			if(isset($_POST["user"]) && isset($_POST["pass"]))
 			{
 				$DB = new RecipeDatabase();
-				$user_id = GenerateUserID($_POST["user"], $_POST["pass"]);
-				if($DB->ValidUserLogin($_POST["user"], $user_id))
+				if($DB->UserExists($_POST["user"]))
 				{
-					header("Location: /index.php");
+					$user_id = GenerateUserID($_POST["user"], $_POST["pass"]);
+					$DB->RegisterUser($_POST["user"], $user_id); // the only way this could fail is by raising an exception
 
+					header("Location: /index.php");
+										
 					$expire_time = time() + 60 * 60 * 10; // 10 hours
 					setcookie("token",
 						(new Session(
@@ -24,11 +26,11 @@
 						))->ToToken(),
 					$expire_time);
 
-					exit(CreateResponse("Success", "Session Created Succesfully"));
+					exit(CreateResponse("Success", "Account Registered Succesfully"));
 				}
 				else
 				{
-					exit("Failure", "Bad Login");
+					exit("Failure", "Bad Username");
 				}
 				
 			}

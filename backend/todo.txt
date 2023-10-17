@@ -1,5 +1,0 @@
-create recipe
-list recpies
-get individual recipe
-delete recipe
-edit recipe

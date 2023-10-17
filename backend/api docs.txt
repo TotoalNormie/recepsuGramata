@@ -4,6 +4,20 @@ Ja tiek atgriezti dati tie atrodas papildus laukā “data”
 Example: {“status”: “Success”, “message”: ”Recipes Retrieved Succesfully”, “data”: [...]}
 Status var būt vainu “Success” vai “Failure”
 
+login
+POST /login.php
+user
+pass
+
+atgriez session token, kā cookie "token", ja user un pass nepieder nevienam kontam, atgriež "Failure" "Bad Login"
+
+register
+POST /register.php
+user
+pass
+
+atgriez session token, kā cookie "token", ja user jau pieder kādam kontam, atgriež "Failure" "Bad Username"
+
 
 get recipes
 GET /recipes.php

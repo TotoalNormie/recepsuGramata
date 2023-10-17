@@ -50,6 +50,7 @@
 	{
 		global $___user_id_salt;
 
+		$password = password_hash($password, PASSWORD_BCRYPT);
 		return hash("sha256", $username . $___user_id_salt . $password);
 	}
 
@@ -106,7 +107,7 @@
 
 
 	// generic session handling
-	
+
 	function HandleSession()
 	{
 		$failureMessage = null;
