@@ -28,7 +28,7 @@
 				}
 				else
 				{
-					exit(CreateResponse("Failure", "Bad Login", "+", $_POST["user"] . "\n" . $user_id));
+					exit(CreateResponse("Failure", "Bad Login"));
 				}
 				
 			}
