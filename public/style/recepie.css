@@ -1,0 +1,24 @@
+img{
+    width:700px;
+    height:;
+}
+.kaste1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.teksts{
+    background-color:#0e8388; 
+    width:700px;
+    border-radius: 1rem;
+}
+.item {
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: #0e8388;
+    & img {
+        aspect-ratio: 16 / 9;
+        border-radius: inherit;
+    }
+}
