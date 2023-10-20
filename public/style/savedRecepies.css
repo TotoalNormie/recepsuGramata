@@ -3,8 +3,7 @@
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
 
-.recepie {
+.item {
     border-radius: 1rem;
-    padding: 1rem;
-
+    padding: 1rem;  
 }
