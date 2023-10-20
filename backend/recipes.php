@@ -13,7 +13,7 @@
 		try
 		{
 			$GetData = GetAllRequestData();
-
+			
 			if(isset($GetData["id"]))
 			{
 				$recipe = $DB->GetRecipeByID($GetData["id"]);
