@@ -50,6 +50,7 @@ h1 {
     text-align: center;
 }
 
+<<<<<<< Updated upstream
 =======
 .wrapper {
     display: grid;
@@ -57,3 +58,4 @@ h1 {
     margin: 1rem;
     gap: 4rem 2rem;
 }
+>>>>>>> Stashed changes
