@@ -36,6 +36,11 @@
 		$out = '';
 		mb_parse_str(file_get_contents("php://input"), $out);
 
+		foreach($_GET as $key => $value) // more code to get around the retarded restrictions of web standards
+		{
+			$out[$key] = $value;
+		}
+
 		return $out;
 	}
 ?>
