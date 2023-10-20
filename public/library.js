@@ -23,7 +23,7 @@ function GenericRequest(url, method, onLoadEnd, body=null, contentType="applicat
 				requestBody = JSON.stringify(body);
 			}
 			else
-				throw "only form urlencoded is supported rn";
+				throw "unsupported content type";
 		}
 
 		request.send(requestBody);
@@ -47,7 +47,7 @@ function ParseJSON(responseText)
 }
 
 
-if(false) // get all recipes
+if(true) // get all recipes
 {
 	GenericRequest("/recipes.php", "GET", function()
 	{
@@ -91,7 +91,7 @@ else if(false) // update recipe
 	let updateObject = {
 		id: 2,
 		title: "new title"
-		// var but viens vai vairak property, updatos tikai dotos (skaties API docs)
+		// var but viens vai vairaki property, updatos tikai dotos (skaties API docs)
 	};
 	GenericRequest("/recipes.php", "POST", function()
 	{
@@ -160,7 +160,7 @@ else if(false) // delete recipe
 		id: targetRecipe
 	});
 }
-else if(true) // is recipe owner
+else if(false) // is recipe owner
 {
 	let targetRecipe = 2;
 	GenericRequest("/is_recipe_owner.php?recipe_id="+targetRecipe, "GET", function()
