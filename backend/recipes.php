@@ -44,12 +44,13 @@
 			if($user_session === false)
 				exit(CreateResponse("Failure", "Please Authenticate Yourself"));
 
-			if(isset($_POST["id"]) && (isset($_POST["title"]) || isset($_POST["description"]) || isset($_POST["image_url"]) || isset($_POST["ingredient_json"])))
+			$PostData = GetAllRequestData();
+			if(isset($PostData["id"]) && (isset($PostData["title"]) || isset($PostData["description"]) || isset($PostData["image_url"]) || isset($PostData["ingredient_json"])))
 			{
-				$ownership = $DB->IsRecipeOwner($_POST["id"], $user_session->user_id);
+				$ownership = $DB->IsRecipeOwner($PostData["id"], $user_session->user_id);
 				if($ownership)
 				{
-					$DB->UpdateRecipeByID($_POST["id"], $_POST["title"] ?? null, $_POST["description"] ?? null, $_POST["image_url"] ?? null, $_POST["ingredient_json"] ?? null);
+					$DB->UpdateRecipeByID($PostData["id"], $PostData["title"] ?? null, $PostData["description"] ?? null, $PostData["image_url"] ?? null, $PostData["ingredient_json"] ?? null);
 					exit(CreateResponse("Success", "Recipe Updated Succesfully"));
 				}
 				else if($ownership === null)
