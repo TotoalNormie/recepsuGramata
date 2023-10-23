@@ -1,27 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Add Recipes</title>
-</head>
-<body>
-    <header></header>
-    <div class="search">
-    </div>
-    <main> 
-        <div class="izveidot">
-                <label for="fname">Nosaukums:</label>
-                <input type="text" id="fname" name="fname"><br><br>
-                <label for="lname">Bilde:</label>
-                <input type="text" id="lname" name="lname"><i class="fa-solid fa-file-arrow-up"></i><br><br>
-                <label for="w3review">Apraksts:</label>
-                <textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
-                <button type ="button" class="Poga" id="Poga" value="submit">Saglabat</button>
-        </div>
-    </main>
-    <script src="js/save.js"></script>
-</body>
+<html>
+  <head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style/main.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+			integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer" />
+		<title>Add Recipes</title>
+	</head>
+	<body>
+		<header>
+			<div class="hideButton">
+				<button><i class="fa-solid fa-bars"></i></button>
+			</div>
+			<a href="index.html">Receptes</a>
+			<a href="savedRecepies.html">Saglabtas receptes</a>
+			<a href="addRecepie.html">Pievienot recepti</a>
+			<a href="login.html">Log-in</a>
+			<a href="register.html">Reģistrēties</a>
+		</header>
+		<div class="search"></div>
+		<main>
+			<form class="izveidot">
+				<label for="fname">Nosaukums:</label>
+				<input type="text" id="fname" name="fname" /><br /><br />
+				<label for="lname">Bilde:</label>
+				<input type="text" id="lname" name="lname" /><i
+					class="fa-solid fa-file-arrow-up"></i
+				>
+				<button>pievienot ingridientu</button>
+				<div class="ingredients">
+					<div class="ingridient">
+						<input type="text" placeholder="Nusaukums">
+						<input type="text" placeholder="Vērtiba">
+						<select name="type" id="">
+							<option value="sk">sk.</option>
+							<option value="l">l</option>
+							<option value="ml">ml</option>
+							<option value="kg">kg</option>
+							<option value="g">g</option>
+						</select>
+						<button><i class="fa-solid fa-xmark"></i></button>
+					</div>
+				</div>
+				<label for="w3review">Apraksts:</label>
+				<textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
+				<button type="button" class="Poga" value="submit">Saglabat</button>
+			</form>
+		</main>
+	</body>
 </html>
