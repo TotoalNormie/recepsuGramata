@@ -46,8 +46,8 @@ function ParseJSON(responseText)
 	return response;
 }
 
-
-if(true) // get all recipes
+// delete this when everything is implemented
+if(false) // get all recipes
 {
 	GenericRequest("/recipes.php", "GET", function()
 	{
