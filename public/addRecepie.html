@@ -13,7 +13,14 @@
 		<title>Add Recipes</title>
 	</head>
 	<body>
-		<header></header>
+		<header>
+			<div class="hideButton">
+				<button><i class="fa-solid fa-bars"></i></button>
+			</div>
+			<a href="index.html">Recepies</a>
+			<a href="savedRecepies.html">Saved Recepies</a>
+			<a href="login.html">Log-in</a>
+		</header>
 		<div class="search"></div>
 		<main>
 			<form class="izveidot">
@@ -23,6 +30,13 @@
 				<input type="text" id="lname" name="lname" /><i
 					class="fa-solid fa-file-arrow-up"></i
 				>
+				<button>pievienot ingridientu</button>
+				<div class="ingredients">
+					<div class="ingridient">
+						<input type="text" placeholder="Nusaukums">
+						<input type="text" placeholder="Vērtība">
+					</div>
+				</div>
 				<label for="w3review">Apraksts:</label>
 				<textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
 				<button type="button" class="Poga" value="submit">Saglabat</button>
