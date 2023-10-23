@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	display: grid;
+	place-items: center;
+	margin: 0;
+	min-height: 100svh;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+	color: #2c3333;
+	background-color: #cbe4de;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: min(20rem, 100%);
+}
+h1 {
+	text-align: center;
+}
+
+input {
+	width: 100%;
+	border: none;
+	border-radius: 1rem;
+	font: inherit;
+	background-color: #0e8388;
+	padding: 0.5rem 1rem;
+    color: #cbe4de;
+}
+::placeholder{
+    color: #cbe4de;
+    opacity: 1;
+}
+:-ms-input-placeholder {
+    color: #cbe4de;
+    opacity: 1;
+}
+button {
+	width: 100%;
+	border: none;
+	border-radius: 1rem;
+	font: inherit;
+	padding: 1rem;
+	background-color: #505050;
+	margin-top: 1rem;
+	color: #cbe4de;
+}
