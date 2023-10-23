@@ -34,7 +34,7 @@ header{
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
     & a {
         color: #CBE4DE;
         text-decoration: none;
@@ -46,11 +46,6 @@ header{
     & a:hover {
         background-color: #2E4F4F;
     }
-}
-
-header a {
-    color: #CBE4DE;
-    text-decoration: none;
 }
 
 .search {
