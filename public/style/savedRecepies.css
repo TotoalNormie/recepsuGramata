@@ -5,5 +5,7 @@
 
 .item {
     border-radius: 1rem;
-    padding: 1rem;  
+    padding: 1rem;
+    color: inherit;
+     
 }
