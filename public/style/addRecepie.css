@@ -1,0 +1,31 @@
+.izveidot{
+    width: 80%;
+    height: 700px;
+    background-color: #0E8388;
+    border-radius: 1rem;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#Name{
+    width: 98%;
+    height: 100px;
+    padding: 1rem;
+    background-color: #2E4F4F;
+}
+#Bilde{
+    width: 98%;
+    height: 100px;
+    padding: 1rem;
+    background-color: #2E4F4F;
+}
+#Desc{
+    width: 98%;
+    padding: 1rem;
+    background-color: #2E4F4F;
+}
+.Poga{
+    background-color: #2E4F4F;
+    border-radius: 1rem;
+}
