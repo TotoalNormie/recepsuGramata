@@ -36,7 +36,34 @@ function GenericRequest(url, method, onLoadEnd, body=null, contentType="applicat
 	}
 }
 
-function ParseJSON(responseText)
+function JoinMatches(matches)
+{
+	matches.forEach((v, i, arr)	=> arr[i] = v[0]);
+	return matches.join("");
+}
+
+function NumInputValidator(element)
+{
+	if(element && element.tagName == "INPUT" && element.getAttribute("type") == "text")
+	{
+		element.addEventListener("input", function() // make sure its only integers
+		{
+			element.value = JoinMatches([...element.value.matchAll(/(^-)|(\d+)/g)]);
+		})
+
+		element.addEventListener("change", function() // clamp them
+		{
+			if(element.getAttribute("min") && element.value < +element.getAttribute("min"))
+				element.value = +element.getAttribute("min");
+			else if(element.getAttribute("max") && element.value > +element.getAttribute("max"))
+				element.value = +element.getAttribute("max");
+		})
+	}
+	else
+		throw "Bad Element Passed To NumInputValidator";
+}
+
+function ParseJSON(responseText) // just suppresses errors
 {
 	let response = null;
 	try
