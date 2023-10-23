@@ -12,44 +12,48 @@
 		<title>Add Recipes</title>
 	</head>
 	<body>
-		<header>
-			<div class="hideButton">
-				<button><i class="fa-solid fa-bars"></i></button>
-			</div>
-			<a href="index.html">Receptes</a>
-			<a href="savedRecepies.html">Saglabtas receptes</a>
-			<a href="addRecepie.html">Pievienot recepti</a>
-			<a href="login.html">Log-in</a>
-			<a href="register.html">Reģistrēties</a>
-		</header>
+		<template id="ingredient_template">
+			<input type="text" name="name" placeholder="Nusaukums">
+			<input type="text" name="value" min="1" placeholder="Skaitlis" style="width:60px">
+			<select name="measurement" id="">
+				<option value="sk">sk.</option>
+				<option value="l">l</option>
+				<option value="ml">ml</option>
+				<option value="kg">kg</option>
+				<option value="g">g</option>
+			</select>
+			<button class="remove_ingredient"><i class="fa-solid fa-xmark"></i></button>
+		</template>
+		<header></header>
 		<div class="search"></div>
 		<main>
-			<form class="izveidot">
-				<label for="fname">Nosaukums:</label>
-				<input type="text" id="fname" name="fname" /><br /><br />
-				<label for="lname">Bilde:</label>
-				<input type="text" id="lname" name="lname" /><i
-					class="fa-solid fa-file-arrow-up"></i
-				>
-				<button>pievienot ingridientu</button>
-				<div class="ingredients">
-					<div class="ingridient">
-						<input type="text" placeholder="Nusaukums">
-						<input type="text" placeholder="Vērtiba">
-						<select name="type" id="">
+			<div class="izveidot">
+				<label for="title">Nosaukums:</label>
+				<input type="text" id="title" name="title"><br><br>
+				<label for="image_url">Bilde:</label>
+				<input type="text" id="image_url" name="image_url">
+				<i class="fa-solid fa-file-arrow-up"></i><br><br>
+				<button id="add_ingredient">pievienot ingridientu</button>
+				<div id="ingredient_container">
+					<div class="ingredient">
+						<input type="text" name="name" placeholder="Nusaukums">
+						<input type="text" name="value" min="1" placeholder="Skaitlis" style="width:60px">
+						<select name="measurement" id="">
 							<option value="sk">sk.</option>
 							<option value="l">l</option>
 							<option value="ml">ml</option>
 							<option value="kg">kg</option>
 							<option value="g">g</option>
 						</select>
-						<button><i class="fa-solid fa-xmark"></i></button>
 					</div>
 				</div>
-				<label for="w3review">Apraksts:</label>
-				<textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
-				<button type="button" class="Poga" value="submit">Saglabat</button>
+				<label for="description">Apraksts:</label>
+				<textarea id="description" id="description" name="description" rows="4" cols="50"></textarea>
+				<span id="request_output"></span>
+				<button type="button" class="Poga" id="submit">Saglabat</button>
 			</form>
 		</main>
+		<script src="library.js"></script>
+		<script src="addRecipe.js"></script>
 	</body>
 </html>
