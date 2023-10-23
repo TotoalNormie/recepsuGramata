@@ -61,7 +61,7 @@ recipe_id
 
 get list of bookmarks
 GET bookmarks.php
-atgrieztajam objektam formāts tāds pats kā GET recipes.php, kad tiek pieprasīti visas receptes
+atgrieztajam masīvam formāts tāds pats kā GET recipes.php, kad tiek pieprasīti visas receptes
 user id padots caur "token" cookie
 
 set bookmark
