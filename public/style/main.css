@@ -37,6 +37,11 @@ header{
     padding: 2rem 1.5rem;
 }
 
+header a {
+    color: #CBE4DE;
+    text-decoration: none;
+}
+
 .search {
     background-color: #2E4F4F;
 }
