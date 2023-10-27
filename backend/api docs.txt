@@ -45,7 +45,6 @@ ingredient_json
 
 create recipe
 PUT /recipes.php
-id - recipe id
 title
 description
 image_url
@@ -56,6 +55,21 @@ DELETE /recipes.php
 id - recipe id
 
 is recipe owner
-is_recipe_owner.php
+GET is_recipe_owner.php
 recipe_id
 ^ user id ar ko salīdzina ir padots caur "token" cookie
+
+get list of bookmarks
+GET bookmarks.php
+atgrieztajam objektam formāts tāds pats kā GET recipes.php, kad tiek pieprasīti visas receptes
+user id padots caur "token" cookie
+
+set bookmark
+PUT bookmarks.php
+recipe_id
+user id padots caur "token" cookie
+
+remove bookmark
+DELETE bookmarks.php
+recipe_id
+user id padots caur "token" cookie
