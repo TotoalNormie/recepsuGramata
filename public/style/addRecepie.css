@@ -1,31 +1,32 @@
-.izveidot{
-    width: 80%;
-    height: 700px;
-    background-color: #0E8388;
-    border-radius: 1rem;
-    justify-content: center;
+main {
+    display: grid;
+    place-items: center;
+}
+
+.izveidot {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-#Name{
-    width: 98%;
-    height: 100px;
-    padding: 1rem;
-    background-color: #2E4F4F;
-}
-#Bilde{
-    width: 98%;
-    height: 100px;
-    padding: 1rem;
-    background-color: #2E4F4F;
-}
-#Desc{
-    width: 98%;
-    padding: 1rem;
-    background-color: #2E4F4F;
-}
-.Poga{
-    background-color: #2E4F4F;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: #0e8388;
     border-radius: 1rem;
+    & input, select, button, textarea {
+        width: 100%;
+        background-color: #2E4F4F;
+        border: none;
+        font: inherit;
+        border-radius: 1rem;
+        padding: 1rem, .5rem;
+    }
+}
+
+
+
+
+/* textarea {
+    padding-inline: 1rem;
+} */
+
+.ingredient {
+    display: flex;
 }
