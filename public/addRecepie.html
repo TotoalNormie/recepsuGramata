@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<template id="ingredient_template">
-			<input type="text" name="name" placeholder="Nusaukums">
+			<input type="text" name="name" placeholder="Nosaukums">
 			<input type="text" name="value" min="1" placeholder="Skaitlis" style="width:60px">
 			<select name="measurement" id="">
 				<option value="sk">sk.</option>
@@ -27,7 +27,7 @@
 		</template>
 		<header>
 			<div class="hideButton">
-				<button><i class="fa-solid fa-bars"></i></button>
+				<button><i class="fa-solid fa-xmark"></i></button>
 			</div>
 			<a href="index.html">Receptes</a>
 			<a href="savedRecepies.html">Saglabtas receptes</a>
@@ -35,7 +35,12 @@
 			<a href="login.html">Log-in</a>
 			<a href="register.html">Reģistrēties</a>
 		</header>
-		<div class="search"></div>
+		<div class="search">
+			<form id="searchBar">
+				<input type="text">
+				<button><i class="fa-solid fa-magnifying-glass"></i></button>
+			</form>
+		</div>
 		<main>
 			<form class="izveidot">
 				<label for="title">Nosaukums:</label>
@@ -45,7 +50,7 @@
 				<button id="add_ingredient">pievienot ingridientu</button>
 				<div id="ingredient_container">
 					<div class="ingredient">
-						<input type="text" name="name" placeholder="Nusaukums">
+						<input type="text" name="name" placeholder="Nosaukums">
 						<input type="text" name="value" min="1" placeholder="Skaitlis" style="width:60px">
 						<select name="measurement" id="">
 							<option value="sk">sk.</option>
