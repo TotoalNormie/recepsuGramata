@@ -69,8 +69,10 @@ header{
 #searchBar {
     margin-inline: auto;
     display: flex;
-    gap: 5px;
+    gap: 3px;
     width: min(20rem, 100%);
+    background-color: #CBE4DE;
+    border-radius: 1rem;
     & input, button {
         border: none;
         background-color: #0e8388;
@@ -118,6 +120,7 @@ form {
 
 .hideButton {
     display: flex;
+    display: none;
     & button {
         font: inherit;
         color: #CBE4DE;
@@ -133,4 +136,25 @@ form {
     & button:hover {
         background-color: #2E4F4F;
     }
+}
+
+.Saglabat {
+    background: none;
+    border: none;
+    padding: .3em;
+    border-radius: .3em;
+    font: inherit;
+    transition: background-color .3s ease;
+    &:hover {
+        background-color: #2E4F4F;
+    }
+    cursor: pointer;
+}
+
+h1, h2, h3 {
+    color:#2C3333;
+}
+
+h2 {
+    margin-block: .5em;
 }
