@@ -11,8 +11,9 @@ for(let i = 0; i<ingredientValueInputs.length; ++i)
 
 let RequestOutput = document.getElementById("request_output");
 
-document.querySelector("button#add_ingredient").addEventListener("click", function()
+document.querySelector("button#add_ingredient").addEventListener("click", function(event)
 {
+	event.preventDefault();
 	let ingredient = IngredientContainer.appendChild(document.createElement("div"));
 	ingredient.className = "ingredient";
 
