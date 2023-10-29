@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="https://www.svgrepo.com/show/84264/recipes.svg">
 		<link rel="stylesheet" href="style/main.css" />
 		<link rel="stylesheet" href="style/recepie.css" />
 		<link
@@ -11,27 +12,69 @@
 			integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer" />
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-			integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer" />
-		<title>Add Recipes</title>
+		<title>Recepie</title>
 	</head>
 	<body>
-		<header>
+		<header include="header.html">
 			<div class="hideButton">
-				<button><i class="fa-solid fa-bars"></i></button>
+				<button><i class="fa-solid fa-xmark"></i></button>
 			</div>
 			<a href="index.html">Receptes</a>
-			<a href="savedRecepies.html">Saglabtas receptes</a>
-			<a href="addRecepie.html">Pievienot recepti</a>
+			<a href="savedRecipes.html">Saglabtas receptes</a>
+			<a href="addRecipe.html">Pievienot recepti</a>
 			<a href="login.html">Log-in</a>
 			<a href="register.html">Reģistrēties</a>
 		</header>
-		<div class="search"></div>
+		<div class="search">
+			<form id="searchBar">
+				<input type="text">
+				<button><i class="fa-solid fa-magnifying-glass"></i></button>
+			</form>
+		</div>
 		<main>
+			<template id="recipeTemplate">
+				<div>
+					<img
+						src=""
+						alt="" />
+				</div>
+				<div class="item details">
+					<h2></h2>
+					<div class="views">
+						<span></span>
+						<i class="fa-solid fa-eye"></i>
+					</div>
+					<button class="Saglabat">
+						<i class="fa-regular fa-bookmark"></i>
+					</button>
+				</div>
+				<div class="item">
+					<h2>Ingridienti:</h2>
+					<ul>
+
+					</ul>
+				</div>
+				<div class="item">
+					<p></p>
+				</div>
+			</template>
+			<template id="moreToLoveTemplate">
+				<a href="" class="item">
+					<div>
+						<img src="" alt="" />
+					</div>
+					<div class="details">
+						<h2></h2>
+						<div class="views">
+							<span></span>
+							<i class="fa-solid fa-eye"></i>
+						</div>
+						<button class="Saglabat">
+							<i class="fa-regular fa-bookmark"></i>
+						</button>
+					</div>
+				</a>
+			</template>
 			<div class="kaste1">
 				<div>
 					<img
@@ -70,7 +113,7 @@
 			</div>
 			<div class="kaste2">
 				<div class="More">
-					<h1>More to Love:</h1>
+					<h1>Vairāk piedāvājumi:</h1>
 				</div>
 
 				<div class="love">
@@ -81,7 +124,12 @@
 						<i class="fa-regular fa-bookmark"></i>
 					</div>
 				</div>
+
+				<button class="seeMore" onclick="seeMore()">Redzēt vairāk...</button>
 			</div>
 		</main>
+		<script src="js/incluedHTML.js"></script>
+		<script src="library.js"></script>
+		<script src="js/recipe.js"></script>
 	</body>
 </html>
