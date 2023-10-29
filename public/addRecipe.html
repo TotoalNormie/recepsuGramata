@@ -16,7 +16,13 @@
 	<body>
 		<template id="ingredient_template">
 			<input type="text" name="name" placeholder="Nosaukums" />
-			<input type="text" name="value" min="1" placeholder="Skaitlis" step="0.1" style="width: 60px" />
+			<input
+				type="text"
+				name="value"
+				min="1"
+				placeholder="Skaitlis"
+				step="0.1"
+				style="width: 60px" />
 			<select name="measurement" id="">
 				<option value="sk">sk.</option>
 				<option value="l">l</option>
@@ -71,12 +77,7 @@
 					</div>
 				</div>
 				<label for="description">Apraksts:</label>
-				<textarea
-					id="description"
-					id="description"
-					name="description"
-					rows="4"
-					cols="50"></textarea>
+				<textarea id="description" name="description" rows="4" cols="50"></textarea>
 				<span id="request_output"></span>
 				<button type="button" class="Poga" id="submit">Saglabat</button>
 			</form>

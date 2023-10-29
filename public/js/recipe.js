@@ -8,12 +8,13 @@ const sidebarContainer = document.querySelector('.love');
 
 let recipe, MoreToLove;
 
-let sidebarRecipeCount = 4;
+let sidebarRecipeCount = 3;
+
+let isRecepieDuplicated = false;
 
 function DisplayRecipe()
 {
 	document.querySelectorAll(".kaste1 > *").forEach(function(v){v.remove()});
-    console.log(recipe);
     const cr = template.content.cloneNode(true); // cloned recipe, shortened for conviniance
 
     cr.querySelector('img').src = recipe.image_url;
@@ -30,20 +31,18 @@ function DisplayRecipe()
         li.textContent = `${ing.name}: ${ing.value} ${ing.mesurment}`;
         cr.querySelector('ul').appendChild(li);
     }
-    console.log(ingredients);
-
 
     RecipeContainer.appendChild(cr);
-    
-    console.log(cr);
 }
 
 function UpdateRecipe()
 {
+    // console.log(id);
     if(!id) return;
 
 	GenericRequest("../backend/recipes.php?id="+id, "GET", function()
 	{
+        // console.log(this.responseText);
 		if(this.responseText)
 		{
 			let response = ParseJSON(this.responseText);
@@ -63,17 +62,21 @@ function UpdateRecipe()
 UpdateRecipe();
 
 function UpdateMoreToLove () {
-    GenericRequest("../backend/recipes.php?limit="+sidebarRecipeCount, "GET", function()
+    console.log("asdf");
+    GenericRequest("../backend/recipes.php?limit="+sidebarRecipeCount+"&sort=views", "GET", function()
 	{
+        console.log(this.responseText);
 		if(this.responseText)
 		{
 			let response = ParseJSON(this.responseText);
+            console.log(response);
+
 			if(response)
 			{
 				if(response.status == "Success")
 				{
-					recipe = response.data;
-
+					MoreToLove = response.data;
+                    console.log(MoreToLove);
 					DispalyMoreToLove();
 				}
 			}
@@ -82,12 +85,19 @@ function UpdateMoreToLove () {
 }
 
 function DispalyMoreToLove() {
-    document.querySelectorAll(".kaste2 > *").forEach(function(v){v.remove()});
+    document.querySelectorAll(".love > *").forEach(function(v){v.remove()});
 
 	// loop of all selected reicpes
-	for(recipe of moreToLoveTemplate) { recipe
-		console.log(recipe);
-		const cr = template.content.cloneNode(true); // cloned recipe, shortened for conviniance
+	for(recipe of MoreToLove) {
+        if(recipe.ID === id && !isRecepieDuplicated) {
+			sidebarRecipeCount++;
+            isRecepieDuplicated = true;
+            UpdateMoreToLove();
+            return;
+		}else if(recipe.ID === id) {
+            continue;
+        }
+		const cr = moreToLoveTemplate.content.cloneNode(true); // cloned recipe, shortened for conviniance
 
 		cr.querySelector('a').href = 'recipe.html?id=' + recipe.ID;
 		cr.querySelector('img').src = recipe.image_url;
@@ -95,9 +105,16 @@ function DispalyMoreToLove() {
 		cr.querySelector('h2').textContent = recipe.title;
 		cr.querySelector('span').textContent = recipe.views;
 
-		RecipeContainer.appendChild(cr);
+		sidebarContainer.appendChild(cr);
 		
 		console.log(cr);
 
 	}
 }
+
+function seeMore() {
+    sidebarRecipeCount += 2;
+    UpdateMoreToLove();
+}
+
+UpdateMoreToLove();

@@ -56,6 +56,8 @@ function UpdateRecipes()
 
 					DisplayRecipes();
 				}
+			}else {
+				console.error(this.responseText);
 			}
 		}
 	});
