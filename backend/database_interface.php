@@ -30,6 +30,12 @@
 
 			return $result->fetch_all(MYSQLI_ASSOC);
 		}
+		
+		public function ListRecipesWithLimit($limit) {
+			$result = $this->DB->query("SELECT ID, title, image_url, views FROM recipes LIMIT $limit");
+
+			return $result->fetch_all(MYSQLI_ASSOC);
+		}
 
 		public function GetRecipeByID($id)
 		{

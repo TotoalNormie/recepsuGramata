@@ -27,6 +27,11 @@
 					exit(CreateResponse("Failure", "Recipe Not Found"));
 				}
 			}
+			elseif($GetData["limit"])
+			{
+				$recipe = $DB->ListRecipesWithLimit($GetData["limit"]);
+				exit(CreateResponse("Success", "Recipe Retrieved Succesfully", "data", $recipe));
+			}
 			else
 			{
 				exit(CreateResponse("Success", "Recipes Retrieved Succesfully", "data", $DB->ListRecipes()));

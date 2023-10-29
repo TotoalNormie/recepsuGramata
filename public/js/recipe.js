@@ -3,8 +3,12 @@ const id = urlParams.get('id');
 
 const RecipeContainer = document.querySelector('.kaste1');
 const template = document.getElementById('recipeTemplate');
+const moreToLoveTemplate = document.getElementById('moreToLoveTemplate');
+const sidebarContainer = document.querySelector('.love');
 
-let recipe;
+let recipe, MoreToLove;
+
+let sidebarRecipeCount = 4;
 
 function DisplayRecipe()
 {
@@ -57,3 +61,43 @@ function UpdateRecipe()
 }
 
 UpdateRecipe();
+
+function UpdateMoreToLove () {
+    GenericRequest("../backend/recipes.php?limit="+sidebarRecipeCount, "GET", function()
+	{
+		if(this.responseText)
+		{
+			let response = ParseJSON(this.responseText);
+			if(response)
+			{
+				if(response.status == "Success")
+				{
+					recipe = response.data;
+
+					DispalyMoreToLove();
+				}
+			}
+		}
+	});
+}
+
+function DispalyMoreToLove() {
+    document.querySelectorAll(".kaste2 > *").forEach(function(v){v.remove()});
+
+	// loop of all selected reicpes
+	for(recipe of moreToLoveTemplate) { recipe
+		console.log(recipe);
+		const cr = template.content.cloneNode(true); // cloned recipe, shortened for conviniance
+
+		cr.querySelector('a').href = 'recipe.html?id=' + recipe.ID;
+		cr.querySelector('img').src = recipe.image_url;
+		cr.querySelector('img').alt = recipe.title + ' attēls';
+		cr.querySelector('h2').textContent = recipe.title;
+		cr.querySelector('span').textContent = recipe.views;
+
+		RecipeContainer.appendChild(cr);
+		
+		console.log(cr);
+
+	}
+}
