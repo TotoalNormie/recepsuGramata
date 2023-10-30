@@ -38,7 +38,6 @@ function IngredientRemover(ingredientToRemove)
 
 document.querySelector("button#add_ingredient").addEventListener("click", function()
 {
-	event.preventDefault();
 	let ingredient = IngredientContainer.appendChild(document.createElement("div"));
 	ingredient.className = "ingredient";
 
