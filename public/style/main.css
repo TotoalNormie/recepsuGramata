@@ -141,7 +141,7 @@ h1 {
 
 .wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     margin: 1rem;
     gap: 4rem 2rem;
 }
@@ -169,6 +169,7 @@ h1, h2, h3 {
 
 h2 {
     margin-block: .5em;
+    word-break: break-all;
 }
 
 @media (min-width: 768px) {
@@ -194,5 +195,5 @@ h2 {
     
     & .hamburber {
         display: none;
-    }
+  }
 }
