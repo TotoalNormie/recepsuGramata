@@ -58,6 +58,11 @@
 			
 			$stmt->bind_param("i", $id);
 			$stmt->execute();
+			
+			if($this->DB->affected_rows < 1)
+				return false;
+			else
+				return true;
 		}
 
 		public function UpdateRecipeByID($id, $title, $description, $image_url, $ingredient_json)

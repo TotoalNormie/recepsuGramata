@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS recipes(
 	views int DEFAULT 0,
 	owner int NOT NULL,
 
-	FOREIGN KEY(owner) REFERENCES users(ID)
+	FOREIGN KEY(owner) REFERENCES users(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS saved_recipes(
@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS saved_recipes(
 	user_id int NOT NULL,
 	recipe_id int NOT NULL,
 
-	FOREIGN KEY(user_id) REFERENCES users(ID),
-	FOREIGN KEY(recipe_id) REFERENCES recipes(ID),
+	FOREIGN KEY(user_id) REFERENCES users(ID) ON DELETE CASCADE,
+	FOREIGN KEY(recipe_id) REFERENCES recipes(ID) ON DELETE CASCADE,
 
 	UNIQUE(user_id, recipe_id)
 );

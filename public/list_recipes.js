@@ -1,8 +1,9 @@
 let RecipeContainer = document.querySelector(".wrapper");
-const template = document.getElementById('recepieTemplate');
+const recipeTemplate = document.getElementById('recepieTemplate');
+
+let SearchBar = document.querySelector("#searchBar > input[type=\"text\"]");
 
 let RecipeList = [];
-
 
 function DisplayRecipes()
 {
@@ -11,8 +12,11 @@ function DisplayRecipes()
 
 	// loop of all selected reicpes
 	for(recipe of RecipeList) {
+		if(recipe.hidden)
+			continue;
+
 		console.log(recipe);
-		const cr = template.content.cloneNode(true); // cloned recipe, shortened for conviniance
+		const cr = recipeTemplate.content.cloneNode(true); // cloned recipe, shortened for conviniance
 
 		cr.querySelector('a').href = 'recipe.html?id=' + recipe.ID;
 		cr.querySelector('img').src = recipe.image_url;
@@ -39,7 +43,27 @@ function DisplayRecipes()
 	// }
 }
 
-//DisplayRecipes();
+function FilterAndLoad()
+{
+	let searchValue = SearchBar.value;
+	for(let i = 0; i<RecipeList.length; ++i)
+	{
+		let thisRecipe = RecipeList[i]; // indexed array lookups are expensive
+
+		if(searchValue !== "" && !thisRecipe.title.toLowerCase().includes(searchValue.toLowerCase()))
+		{
+			RecipeList[i].hidden = true;
+		}
+		else
+		{
+			RecipeList[i].hidden = false;
+		}
+	}
+	
+	DisplayRecipes();
+}
+
+SearchBar.addEventListener("input", FilterAndLoad);
 
 function UpdateRecipes()
 {
