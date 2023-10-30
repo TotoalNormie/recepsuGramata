@@ -192,26 +192,6 @@ form {
     margin: 0;
 }
 
-.hideButton {
-    display: flex;
-    display: none;
-    & button {
-        font: inherit;
-        color: #CBE4DE;
-        margin-left: auto;
-        background: none;
-        width: 1.7rem;
-        aspect-ratio: 1;
-        border-radius: 100vw;
-        border: none;
-        transition: background-color .3s ease;
-        cursor: pointer;
-    }
-    & button:hover {
-        background-color: #2E4F4F;
-    }
-}
-
 .Saglabat {
     background: none;
     border: none;
@@ -231,4 +211,5 @@ h1, h2, h3 {
 
 h2 {
     margin-block: .5em;
+    word-break: break-all;
 }
