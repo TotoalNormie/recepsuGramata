@@ -110,8 +110,10 @@
 				$ownership = $DB->IsRecipeOwner($DeleteData["id"], $user_session->user_id);
 				if($ownership)
 				{
-					$DB->DeleteRecipeByID($DeleteData["id"]);
-					exit(CreateResponse("Success", "Recipe Deleted Succesfully"));
+					if($DB->DeleteRecipeByID($DeleteData["id"]))
+						exit(CreateResponse("Success", "Recipe Deleted Succesfully"));
+					else
+						exit(CreateResponse("Failure", "Something Failed While Deleting Recipe"));
 				}
 				else if($ownership === null)
 				{

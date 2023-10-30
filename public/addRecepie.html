@@ -1,5 +1,6 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="style/main.css" />
@@ -12,6 +13,9 @@
 		<title>Add Recipes</title>
 	</head>
 	<body>
+		<template id="remove_ingredient_button">
+			<button class="remove_ingredient"><i class="fa-solid fa-xmark"></i></button>
+		</template>
 		<template id="ingredient_template">
 			<input type="text" name="name" placeholder="Nusaukums">
 			<input type="text" name="value" min="1" placeholder="Skaitlis" style="width:60px">
