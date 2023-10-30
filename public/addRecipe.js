@@ -1,3 +1,6 @@
+if(!GetCookie("token"))
+	window.location.href = "index.html";
+
 let TitleInput = document.querySelector("input#title");
 let ImageInput = document.querySelector("input#image_url");
 let DescriptionInput = document.getElementById("description");
