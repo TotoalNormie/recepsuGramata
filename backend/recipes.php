@@ -27,6 +27,20 @@
 					exit(CreateResponse("Failure", "Recipe Not Found"));
 				}
 			}
+			elseif(isset($GetData["limit"]))
+			{
+				if(isset($GetData["sort"]))
+				{
+					$sort = $GetData["sort"];
+					$recipe = $DB->ListRecipesWithLimit($GetData["limit"], $sort);
+				}
+				else
+				{
+					$recipe = $DB->ListRecipesWithLimit($GetData["limit"]);
+				}
+
+				exit(CreateResponse("Success", "Recipe Retrieved Succesfully", "data", $recipe));
+			}
 			else
 			{
 				exit(CreateResponse("Success", "Recipes Retrieved Succesfully", "data", $DB->ListRecipes()));
@@ -110,8 +124,10 @@
 				$ownership = $DB->IsRecipeOwner($DeleteData["id"], $user_session->user_id);
 				if($ownership)
 				{
-					$DB->DeleteRecipeByID($DeleteData["id"]);
-					exit(CreateResponse("Success", "Recipe Deleted Succesfully"));
+					if($DB->DeleteRecipeByID($DeleteData["id"]))
+						exit(CreateResponse("Success", "Recipe Deleted Succesfully"));
+					else
+						exit(CreateResponse("Failure", "Something Failed While Deleting Recipe"));
 				}
 				else if($ownership === null)
 				{
