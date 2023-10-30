@@ -3,7 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style/main.css" />
+		<link rel="stylesheet" href="style/main.css" />		
+		<link rel="stylesheet" href="style/addRecepie.css" />
+		<link rel="icon" href="https://www.svgrepo.com/show/84264/recipes.svg" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -17,7 +19,7 @@
 			<button class="remove_ingredient"><i class="fa-solid fa-xmark"></i></button>
 		</template>
 		<template id="ingredient_template">
-			<input type="text" name="name" placeholder="Nusaukums">
+			<input type="text" name="name" placeholder="Nosaukums">
 			<input type="text" name="value" min="1" placeholder="Skaitlis" style="width:60px">
 			<select name="measurement" id="">
 				<option value="sk">sk.</option>
@@ -25,6 +27,7 @@
 				<option value="ml">ml</option>
 				<option value="kg">kg</option>
 				<option value="g">g</option>
+				<option value="karotes">karotes</option>
 			</select>
 			<button class="remove_ingredient"><i class="fa-solid fa-xmark"></i></button>
 		</template>
@@ -40,7 +43,7 @@
 				<button id="add_ingredient">pievienot ingridientu</button>
 				<div id="ingredient_container">
 					<div class="ingredient">
-						<input type="text" name="name" placeholder="Nusaukums">
+						<input type="text" name="name" placeholder="Nosaukums">
 						<input type="text" name="value" min="1" placeholder="Skaitlis" style="width:60px">
 						<select name="measurement" id="">
 							<option value="sk">sk.</option>
@@ -48,6 +51,7 @@
 							<option value="ml">ml</option>
 							<option value="kg">kg</option>
 							<option value="g">g</option>
+							<option value="karotes">karotes</option>
 						</select>
 					</div>
 				</div>
@@ -59,5 +63,6 @@
 		</main>
 		<script src="library.js"></script>
 		<script src="addRecipe.js"></script>
+		<script src="js/incluedHTML.js"></script>
 	</body>
 </html>

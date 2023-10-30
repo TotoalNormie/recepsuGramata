@@ -30,6 +30,13 @@
 
 			return $result->fetch_all(MYSQLI_ASSOC);
 		}
+		
+		public function ListRecipesWithLimit($limit, $sort = "") {
+			if($sort) $sort = "ORDER BY " .$sort ." DESC";
+			$result = $this->DB->query("SELECT ID, title, image_url, views FROM recipes $sort LIMIT $limit");
+
+			return $result->fetch_all(MYSQLI_ASSOC);
+		}
 
 		public function GetRecipeByID($id)
 		{
