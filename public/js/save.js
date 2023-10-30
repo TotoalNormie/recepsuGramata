@@ -1,7 +1,11 @@
-const buttons = document.querySelectorAll('button');
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    alert('Button clicked!');
-  });
+
+const Saglabat = document.querySelectorAll('.Saglabat');
+Saglabat.forEach(Saglabat => {
+  Saglabat.addEventListener('click', save);
 });
-console.log(buttons);
+console.log(Saglabat);
+
+
+function save(){
+    alert('Button clicked!');
+}

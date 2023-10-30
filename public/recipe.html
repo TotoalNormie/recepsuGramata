@@ -25,12 +25,17 @@
 			<a href="login.html">Log-in</a>
 			<a href="register.html">Reģistrēties</a>
 		</header>
-		<div class="search">
+		<div class="search"include="search.html">
+			<button class="hamburber">
+			  <div class="bar"></div>
+			</button>
+	  
 			<form id="searchBar">
-				<input type="text">
-				<button><i class="fa-solid fa-magnifying-glass"></i></button>
+			  <input type="text" />
+			  <button><i class="fa-solid fa-magnifying-glass"></i></button>
 			</form>
-		</div>
+		  </div>
+
 		<main>
 			<template id="recipeTemplate">
 				<div>
@@ -113,7 +118,7 @@
 			</div>
 			<div class="kaste2">
 				<div class="More">
-					<h1>Vairāk piedāvājumi:</h1>
+					<h2>Vairāk piedāvājumi:</h2>
 				</div>
 
 				<div class="love">
@@ -131,5 +136,6 @@
 		<script src="js/incluedHTML.js"></script>
 		<script src="library.js"></script>
 		<script src="js/recipe.js"></script>
+		<script src="js/hamburger.js"></script>
 	</body>
 </html>
