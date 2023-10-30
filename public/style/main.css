@@ -14,31 +14,6 @@ body {
     font-size: 18px;
     color: #2C3333;
     background-color: #CBE4DE;
-
-    & header {
-        display: none;
-    }
-}
-
-@media (min-width: 768px) {
-    body {
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto 1fr;
-    
-        & header {
-            display: flex;
-            grid-column: 1 / 2;
-            grid-row: 1 / -1;
-        }
-        & .search {
-            grid-column: 2 / -1;
-            grid-row: 1 / 2;
-        }
-        & main {
-            grid-column: 2 / -1;
-            grid-row: 2 / -1;
-        }
-    }
 }
 
 header{
@@ -48,6 +23,13 @@ header{
     flex-direction: column;
     gap: 1rem;
     padding: 1.5rem;
+
+    position: fixed;
+    top: 4.5rem;
+    transform: translateX(-100%);
+    min-height: 100vh;
+    z-index: 98;
+    
     & a {
         color: #CBE4DE;
         text-decoration: none;
@@ -59,41 +41,21 @@ header{
     & a:hover {
         background-color: #2E4F4F;
     }
+    
+    &.is-active {
+        transform: translateX(0);
+    }
 }
 
 
 .mobile-nav {
     position: fixed;
     top: 0;
-    left: 100%;
+    right: 100%;
     width: 100%;
     min-height: 100vh;
-    display: block;
     z-index: 98;
-    background-color: #2E4F4F;
-    margin-top: 120px;
     transition: 0.4s;
-
-    & a {
-        display:block;
-        margin: 0 auto 16px;
-        text-align:center;
-        width: 100%;
-        max-width: 200px;
-        padding: 12px 16px;
-        background-color: #477676;
-
-        color: #FFF;
-        text-decoration: none;
-    }
-
-    & a:hover {
-        background-color: #558a8a;
-    }
-
-    &.is-active {
-        left: 0;
-    }
 }
 
 
@@ -164,10 +126,6 @@ header{
     opacity: 0;
 }
 
-
-
-
-
 main {
     padding: 1.5rem;
 }
@@ -212,4 +170,30 @@ h1, h2, h3 {
 h2 {
     margin-block: .5em;
     word-break: break-all;
+}
+
+@media (min-width: 768px) {
+    body {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr;
+    
+        & header {
+            position: static;
+            transform: translateX(0);
+            grid-column: 1 / 2;
+            grid-row: 1 / -1;
+        }
+        & .search {
+            grid-column: 2 / -1;
+            grid-row: 1 / 2;
+        }
+        & main {
+            grid-column: 2 / -1;
+            grid-row: 2 / -1;
+        }
+    }
+    
+    & .hamburber {
+        display: none;
+  }
 }

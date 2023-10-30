@@ -33,7 +33,7 @@
 		</template>
 		<header include="header.html">
 			<div class="hideButton">
-				<button><i class="fa-solid fa-xmark"></i></button>
+			  <button><i class="fa-solid fa-xmark"></i></button>
 			</div>
 			<a href="index.html">Receptes</a>
 			<a href="savedRecipes.html">Saglabtas receptes</a>
@@ -41,12 +41,16 @@
 			<a href="login.html">Log-in</a>
 			<a href="register.html">Reģistrēties</a>
 		</header>
-		<div class="search">
+		<div class="search"include="search.html">
+			<button class="hamburber">
+			  <div class="bar"></div>
+			</button>
+	  
 			<form id="searchBar">
-				<input type="text">
-				<button><i class="fa-solid fa-magnifying-glass"></i></button>
+			  <input type="text" />
+			  <button><i class="fa-solid fa-magnifying-glass"></i></button>
 			</form>
-		</div>
+		  </div>
 		<main>
 			<h1>Pievienot jaunu recepti</h1>
 			<div class="izveidot">
@@ -83,5 +87,6 @@
 		<script src="library.js"></script>
 		<script src="addRecipe.js"></script>
 		<script src="js/incluedHTML.js"></script>
+		<script src="js/hamburger.js"></script>
 	</body>
 </html>
