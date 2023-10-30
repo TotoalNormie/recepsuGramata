@@ -73,6 +73,22 @@ function ParseJSON(responseText) // just suppresses errors
 	return response;
 }
 
+function GetCookie(name)
+{
+	let cookieString = decodeURIComponent(document.cookie);
+	let searchStr = name + "=";
+	let cookieStart = cookieString.indexOf(searchStr);
+	if(cookieStart !== -1)
+	{
+		cookieStart =  + searchStr.length;
+		let cookieEnd = cookieString.indexOf(";", cookieStart);
+
+		return cookieString.substring(cookieStart, cookieEnd !== -1 ? cookieEnd + 1 : undefined);
+	}
+	else
+		return false;
+}
+
 // delete this when everything is implemented
 if(false) // get all recipes
 {
