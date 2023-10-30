@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style/main.css" />		
+		<link rel="stylesheet" href="style/main.css" />
 		<link rel="stylesheet" href="style/addRecepie.css" />
 		<link rel="icon" href="https://www.svgrepo.com/show/84264/recipes.svg" />
 		<link
@@ -19,8 +19,8 @@
 			<button class="remove_ingredient"><i class="fa-solid fa-xmark"></i></button>
 		</template>
 		<template id="ingredient_template">
-			<input type="text" name="name" placeholder="Nosaukums">
-			<input type="text" name="value" min="1" placeholder="Skaitlis" style="width:60px">
+			<input type="text" name="name" placeholder="Nosaukums" />
+			<input type="text" name="value" min="1" placeholder="Skaitlis" style="width: 60px" />
 			<select name="measurement" id="">
 				<option value="sk">sk.</option>
 				<option value="l">l</option>
@@ -40,7 +40,7 @@
 			<a href="addRecipe.html">Pievienot recepti</a>
 			<a href="login.html">Log-in</a>
 			<a href="register.html">Reģistrēties</a>
-		  </header>
+		</header>
 		<div class="search"include="search.html">
 			<button class="hamburber">
 			  <div class="bar"></div>
@@ -52,18 +52,16 @@
 			</form>
 		  </div>
 		<main>
-			<h1>Pievienot jaunu recepti</h1>
 			<div class="izveidot">
 				<label for="title">Nosaukums:</label>
-				<input type="text" id="title" name="title"><br><br>
+				<input type="text" id="title" name="title" />
 				<label for="image_url">Bilde:</label>
-				<input type="text" id="image_url" name="image_url">
-				<i class="fa-solid fa-file-arrow-up"></i><br><br>
+				<input type="text" id="image_url" name="image_url" />
 				<button id="add_ingredient">pievienot ingridientu</button>
 				<div id="ingredient_container">
 					<div class="ingredient">
-						<input type="text" name="name" placeholder="Nosaukums">
-						<input type="text" name="value" min="1" placeholder="Skaitlis" style="width:60px">
+						<input type="text" name="name" placeholder="Nosaukums" />
+						<input type="text" name="value" min="1" placeholder="Skaitlis" />
 						<select name="measurement" id="">
 							<option value="sk">sk.</option>
 							<option value="l">l</option>
@@ -75,10 +73,15 @@
 					</div>
 				</div>
 				<label for="description">Apraksts:</label>
-				<textarea id="description" id="description" name="description" rows="4" cols="50"></textarea>
+				<textarea
+					id="description"
+					id="description"
+					name="description"
+					rows="4"
+					cols="50"></textarea>
 				<span id="request_output"></span>
 				<button type="button" class="Poga" id="submit">Saglabat</button>
-			</div>
+			</form>
 		</main>
 		<script src="library.js"></script>
 		<script src="addRecipe.js"></script>

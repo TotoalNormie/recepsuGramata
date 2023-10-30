@@ -11,5 +11,3 @@ function hamburberButton() {
 setTimeout(() => {
     mobile_menu.style.transition = '0.4s';
 }, 500)
-
-console.log(mobile_menu);

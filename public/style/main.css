@@ -58,7 +58,6 @@ header{
     transition: 0.4s;
 }
 
-
 .search {
     background-color: #2E4F4F;
     padding: 1rem;
@@ -119,7 +118,7 @@ header{
 }
 
 .hamburber.is-active:after {
-    transform: rotate(45deg) translate(-9px, -8px);
+    transform: rotate(45deg) translate(-9px, -7.5px);
 }
 
 .hamburber.is-active .bar {
@@ -141,7 +140,7 @@ h1 {
 
 .wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     margin: 1rem;
     gap: 4rem 2rem;
 }
@@ -169,6 +168,7 @@ h1, h2, h3 {
 
 h2 {
     margin-block: .5em;
+    word-break: break-all;
 }
 
 @media (min-width: 768px) {
@@ -194,5 +194,5 @@ h2 {
     
     & .hamburber {
         display: none;
-    }
+  }
 }
