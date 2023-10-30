@@ -1,5 +1,8 @@
 if(!GetCookie("token"))
+{
+	alert("You need to be logged in to add recipes");
 	window.location.href = "index.html";
+}
 
 let TitleInput = document.querySelector("input#title");
 let ImageInput = document.querySelector("input#image_url");
@@ -14,7 +17,7 @@ let ingredientValueInputs = IngredientContainer.querySelectorAll("div.ingredient
 for(let i = 0; i<ingredientValueInputs.length; ++i)
 	NumInputValidator(ingredientValueInputs[i]); 
 
-let RequestOutput = document.getElementById("request_output");
+let RequestOutput = document.querySelector("#request_output");
 
 let MinIngredientCount = 1;
 let IngredientCount = document.querySelectorAll("div#ingredient_container > .ingredient").length;

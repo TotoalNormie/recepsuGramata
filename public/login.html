@@ -13,15 +13,19 @@
 		<title>Login</title>
 	</head>
 	<body>
-		<form>
+		<div id="login_form">
 			<h1>Login</h1>
-			<input type="text" name="username" autocomplete="nickname" placeholder="Username" />
-			<input
+			<input id="user_input" type="text" name="username" autocomplete="nickname" placeholder="Username" />
+			<input id="pass_input"
 				type="password"
 				name="password"
 				autocomplete="current-password"
 				placeholder="Password" />
+			<span id="request_output"></span>
 			<button>Login</button>
-		</form>
+		</div>
+
+		<script src="library.js"></script>
+		<script src="login.js"></script>
 	</body>
 </html>
