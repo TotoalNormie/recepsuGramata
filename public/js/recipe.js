@@ -80,18 +80,18 @@ function UpdateMoreToLove () {
     console.log("asdf");
     GenericRequest("../backend/recipes.php?limit="+sidebarRecipeCount+"&sort=views", "GET", function()
 	{
-        // console.log(this.responseText);
+        //console.log(this.responseText);
 		if(this.responseText)
 		{
 			let response = ParseJSON(this.responseText);
-            // console.log(response);
+            //console.log(response);
 
 			if(response)
 			{
 				if(response.status == "Success")
 				{
 					MoreToLove = response.data;
-                    // console.log(MoreToLove);
+                    //console.log(MoreToLove);
 					DispalyMoreToLove();
 				}
 			}
@@ -103,7 +103,8 @@ function DispalyMoreToLove() {
     document.querySelectorAll(".love > *").forEach(function(v){v.remove()});
 
 	// loop of all selected reicpes
-	for(recipe of MoreToLove) {
+	for(let i = 0; i < MoreToLove.length; ++i) {
+		let recipe = MoreToLove[i];
         if(recipe.ID === id && !isRecepieDuplicated) {
 			sidebarRecipeCount++;
             isRecepieDuplicated = true;
@@ -137,7 +138,7 @@ function DispalyMoreToLove() {
 
 		sidebarContainer.appendChild(cr);
 		
-		// console.log(cr);
+		//console.log(cr);
 
 	}
 }
