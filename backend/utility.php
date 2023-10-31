@@ -33,12 +33,11 @@
 
 	function GetAllRequestData()
 	{
-		$out = '';
 		$out = file_get_contents("php://input");
 
 		$decodedJson = json_decode($out, true);
 		if($decodedJson === null)
-			mb_parse_str(file_get_contents("php://input"), $out);
+			mb_parse_str($out, $out);
 		else
 			$out = $decodedJson;
 

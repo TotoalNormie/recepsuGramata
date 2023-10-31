@@ -23,12 +23,27 @@ function DisplayRecipe()
     cr.querySelector('span').textContent = recipe.views;
     cr.querySelector('p').textContent = recipe.description;
 
+	let saveButton = cr.querySelector('button.Saglabat')
+	if(recipe.bookmarked)
+		saveButton.classList.add("saved");
+
+	saveButton.addEventListener("click", function()
+	{
+		GenericRequest("/backend/bookmarks.php", saveButton.classList.toggle("saved") ? "PUT" : "DELETE", function()
+		{
+				
+		},
+		{
+			recipe_id: recipe.ID
+		});
+	})
+
     const ingredients = JSON.parse(recipe.ingredient_json);
 
     // if()
     for(ing of ingredients) {
         const li = document.createElement('li');
-        li.textContent = `${ing.name}: ${ing.value} ${ing.mesurment}`;
+        li.textContent = `${ing.name}: ${ing.value} ${ing.measurement}`;
         cr.querySelector('ul').appendChild(li);
     }
 
@@ -104,6 +119,21 @@ function DispalyMoreToLove() {
 		cr.querySelector('img').alt = recipe.title + ' attēls';
 		cr.querySelector('h2').textContent = recipe.title;
 		cr.querySelector('span').textContent = recipe.views;
+
+		let saveButton = cr.querySelector('button.Saglabat')
+		if(recipe.bookmarked)
+			saveButton.classList.add("saved");
+
+		saveButton.addEventListener("click", function()
+		{
+			GenericRequest("/backend/bookmarks.php", saveButton.classList.toggle("saved") ? "PUT" : "DELETE", function()
+			{
+					
+			},
+			{
+				recipe_id: recipe.ID
+			});
+		})
 
 		sidebarContainer.appendChild(cr);
 		
