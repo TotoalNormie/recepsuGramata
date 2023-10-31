@@ -15,7 +15,7 @@ function DisplayRecipes()
 	// loop of all selected reicpes
 	for(let i = 0; i < RecipeList.length; ++i) {
 		let recipe = RecipeList[i];
-				
+
 		if(recipe.hidden)
 			continue;
 
@@ -45,18 +45,6 @@ function DisplayRecipes()
 		RecipeContainer.appendChild(cr);
 
 	}
-	// for(let i = 0; i < RecipeList.length; ++i)
-	// {
-	// 	let recipeElement = RecipeContainer.appendChild(document.createElement("div"));
-	// 	recipeElement.className = "item";
-
-
-	// 	let recipeImage = recipeElement.appendChild(document.createElement("img"));
-	// 	console.log(recipeImage.src = RecipeList[i].image_url);		
-
-	// 	let recipeTitle = recipeElement.appendChild(document.createElement("p1"));
-	// 	recipeTitle.innerText = RecipeList[i].title;
-	// }
 }
 
 function SortRecipes()

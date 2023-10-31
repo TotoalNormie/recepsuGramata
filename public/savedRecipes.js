@@ -19,7 +19,9 @@ function DisplayRecipes()
 
 
 	// loop of all selected reicpes
-	for(recipe of RecipeList) {
+	for(let i = 0; i < RecipeList.length; ++i) {
+		let recipe = RecipeList[i];
+		
 		if(recipe.hidden)
 			continue;
 
