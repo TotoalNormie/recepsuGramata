@@ -28,23 +28,29 @@
 					exit(CreateResponse("Failure", "Recipe Not Found"));
 				}
 			}
-			elseif(isset($GetData["limit"]))
-			{
-				if(isset($GetData["sort"]))
-				{
-					$sort = $GetData["sort"];
-					$recipe = $DB->ListRecipesWithLimit($GetData["limit"], $sort);
-				}
-				else
-				{
-					$recipe = $DB->ListRecipesWithLimit($GetData["limit"]);
-				}
-
-				exit(CreateResponse("Success", "Recipe Retrieved Succesfully", "data", $recipe));
-			}
 			else
 			{
-				exit(CreateResponse("Success", "Recipes Retrieved Succesfully", "data", $DB->ListRecipes()));
+				$recipes = null;
+				if(isset($GetData["limit"]))
+					$recipes = $DB->ListRecipesWithLimit($GetData["limit"], $GetData["sort"] ?? "");
+				else
+					$recipes = $DB->ListRecipes();
+
+				if($user_session)
+				{
+					$bookmarks = $DB->GetBookmarkedRecipes($user_session->user_id);
+
+					$bookmarkCount = count($bookmarks);
+					$recipeIDList = array_column($recipes, "ID");
+
+					for($i = 0; $i < $bookmarkCount; ++$i)
+					{
+						$index = array_search($bookmarks["recipe_id"], $recipeIDList);
+						if($index)
+							$recipes[$index]["bookmarked"] = true;
+					}
+				}
+				exit(CreateResponse("Success", "Recipes Retrieved Succesfully", "data", $recipes));
 			}
 		}
 		catch(Exception $e)
