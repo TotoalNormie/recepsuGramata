@@ -1,3 +1,9 @@
+if(!GetCookie("token"))
+{
+	alert("You need to be logged in to view saved recipes");
+	window.location.href = "index.html";
+}
+
 let RecipeContainer = document.querySelector(".wrapper");
 const recipeTemplate = document.getElementById('recepieTemplate');
 

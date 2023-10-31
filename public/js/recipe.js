@@ -28,7 +28,7 @@ function DisplayRecipe()
     // if()
     for(ing of ingredients) {
         const li = document.createElement('li');
-        li.textContent = `${ing.name}: ${ing.value} ${ing.mesurment}`;
+        li.textContent = `${ing.name}: ${ing.value} ${ing.measurement}`;
         cr.querySelector('ul').appendChild(li);
     }
 
