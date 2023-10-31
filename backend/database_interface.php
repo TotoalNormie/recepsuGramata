@@ -31,11 +31,19 @@
 			return $result->fetch_all(MYSQLI_ASSOC);
 		}
 		
-		public function ListRecipesWithLimit($limit, $sort = "") {
-			if($sort) $sort = "ORDER BY " .$sort ." DESC";
-			$result = $this->DB->query("SELECT ID, title, image_url, views FROM recipes $sort LIMIT $limit");
+		public function ListRecipesWithLimit($limit, $sort = "")
+		{
+			if($sort === "views") // || ...
+				$sort = "ORDER BY $sort DESC";
+			else
+				$sort = "ORDER BY views DESC";
 
-			return $result->fetch_all(MYSQLI_ASSOC);
+			$stmt = $this->DB->prepare("SELECT ID, title, image_url, views FROM recipes $sort LIMIT ?");
+
+			$stmt->bind_param("i", $limit);
+			$stmt->execute();
+
+			return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 		}
 
 		public function GetRecipeByID($id)

@@ -13,6 +13,22 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer" />
 		<title>Saved Recipes</title>
+
+		<template id="recepieTemplate">
+			<a href="" class="item">
+			  <img src="" alt="" />
+			  <div class="details">
+				<h2></h2>
+				<div class="views">
+				  <span></span>
+				  <i class="fa-solid fa-eye"></i>
+				</div>
+				<button class="Saglabat">
+				  <i class="fa-regular fa-bookmark"></i>
+				</button>
+			  </div>
+			</a>
+		  </template>
 	</head>
 	<body>
 		<header include="header.html">
@@ -25,94 +41,25 @@
 			<a href="login.html">Log-in</a>
 			<a href="register.html">Reģistrēties</a>
 		</header>
-		<div class="search"include="search.html">
+		<div class="search" include="search.html">
 			<button class="hamburber">
 			  <div class="bar"></div>
 			</button>
 	  
-			<form id="searchBar">
-			  <input type="text" />
-			  <button><i class="fa-solid fa-magnifying-glass"></i></button>
-			</form>
-		  </div>	
+			<div id="searchBar">
+				<input type="text" />
+				<button><i class="fa-solid fa-magnifying-glass"></i></button>
+			</div>
+		</div>	
 		<main>
 			<h1>Saved Recipes</h1>
 			<div class="wrapper">
-				<div class="item">
-					<h2 class="Nosaukums">Mac & Cheese</h2>
-					<div>
-						<img
-							src="https://static01.nyt.com/images/2017/07/12/well/macaroni-cheese/macaroni-cheese-videoSixteenByNine3000.jpg?year=2017&h=1686&w=3000&s=a987abcf450297ea80b0d158a0547fa033b9ba9d6e9038622c8b61077142e904&k=ZQJBKqZ0VN&tw=1"
-							alt="" />
-					</div>
-					<button class="Saglabat">
-						<i class="fa-regular fa-bookmark"></i>
-					</button>
-					<p>teksts daudz teksta</p>
-				</div>
-				<div class="item">
-					<h2 class="Nosaukums">Mac & Cheese</h2>
-					<div>
-						<img
-							src="https://static01.nyt.com/images/2017/07/12/well/macaroni-cheese/macaroni-cheese-videoSixteenByNine3000.jpg?year=2017&h=1686&w=3000&s=a987abcf450297ea80b0d158a0547fa033b9ba9d6e9038622c8b61077142e904&k=ZQJBKqZ0VN&tw=1"
-							alt="" />
-					</div>
-					<button class="Saglabat">
-						<i class="fa-regular fa-bookmark"></i>
-					</button>
-					<p>teksts daudz teksta</p>
-				</div>
-				<div class="item">
-					<h2 class="Nosaukums">Mac & Cheese</h2>
-					<div>
-						<img
-							src="https://static01.nyt.com/images/2017/07/12/well/macaroni-cheese/macaroni-cheese-videoSixteenByNine3000.jpg?year=2017&h=1686&w=3000&s=a987abcf450297ea80b0d158a0547fa033b9ba9d6e9038622c8b61077142e904&k=ZQJBKqZ0VN&tw=1"
-							alt="" />
-					</div>
-					<button class="Saglabat">
-						<i class="fa-regular fa-bookmark"></i>
-					</button>
-					<p>teksts daudz teksta</p>
-				</div>
-				<div class="item">
-					<h2 class="Nosaukums">Mac & Cheese</h2>
-					<div>
-						<img
-							src="https://static01.nyt.com/images/2017/07/12/well/macaroni-cheese/macaroni-cheese-videoSixteenByNine3000.jpg?year=2017&h=1686&w=3000&s=a987abcf450297ea80b0d158a0547fa033b9ba9d6e9038622c8b61077142e904&k=ZQJBKqZ0VN&tw=1"
-							alt="" />
-					</div>
-					<button class="Saglabat">
-						<i class="fa-regular fa-bookmark"></i>
-					</button>
-					<p>teksts daudz teksta</p>
-				</div>
-				<div class="item">
-					<h2 class="Nosaukums">Mac & Cheese</h2>
-					<div>
-						<img
-							src="https://static01.nyt.com/images/2017/07/12/well/macaroni-cheese/macaroni-cheese-videoSixteenByNine3000.jpg?year=2017&h=1686&w=3000&s=a987abcf450297ea80b0d158a0547fa033b9ba9d6e9038622c8b61077142e904&k=ZQJBKqZ0VN&tw=1"
-							alt="" />
-					</div>
-					<button class="Saglabat">
-						<i class="fa-regular fa-bookmark"></i>
-					</button>
-					<p>teksts daudz teksta</p>
-				</div>
-				<div class="item">
-					<h2 class="Nosaukums">Mac & Cheese</h2>
-					<div>
-						<img
-							src="https://static01.nyt.com/images/2017/07/12/well/macaroni-cheese/macaroni-cheese-videoSixteenByNine3000.jpg?year=2017&h=1686&w=3000&s=a987abcf450297ea80b0d158a0547fa033b9ba9d6e9038622c8b61077142e904&k=ZQJBKqZ0VN&tw=1"
-							alt="" />
-					</div>
-					<button class="Saglabat">
-						<i class="fa-regular fa-bookmark"></i>
-					</button>
-					<p>teksts daudz teksta</p>
-				</div>
+				
 			</div>
 		</main>
 		<script src="js/incluedHTML.js"></script>
 		<script src="js/hamburger.js"></script>
+		<script src="library.js"></script>
+		<script src="savedRecipes.js"></script>
 	</body>
 </html>
