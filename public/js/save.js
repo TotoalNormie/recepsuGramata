@@ -6,6 +6,6 @@ Saglabat.forEach(Saglabat => {
 console.log(Saglabat);
 
 
-function save(){
-    alert('Button clicked!');
+function save(event){
+    event.preventDefault();
 }
