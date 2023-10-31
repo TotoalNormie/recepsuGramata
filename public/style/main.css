@@ -190,3 +190,14 @@ h2 {
         display: none;
   }
 }
+
+.saved {
+    position: relative;
+    color: transparent;
+    :before {
+        color: #2C3333;
+        font-family: 'Font Awesome 6 free';
+        font-weight: 900;
+        content: '\f02e';
+    }
+}

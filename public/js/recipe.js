@@ -65,18 +65,18 @@ function UpdateMoreToLove () {
     console.log("asdf");
     GenericRequest("../backend/recipes.php?limit="+sidebarRecipeCount+"&sort=views", "GET", function()
 	{
-        console.log(this.responseText);
+        // console.log(this.responseText);
 		if(this.responseText)
 		{
 			let response = ParseJSON(this.responseText);
-            console.log(response);
+            // console.log(response);
 
 			if(response)
 			{
 				if(response.status == "Success")
 				{
 					MoreToLove = response.data;
-                    console.log(MoreToLove);
+                    // console.log(MoreToLove);
 					DispalyMoreToLove();
 				}
 			}
@@ -107,7 +107,7 @@ function DispalyMoreToLove() {
 
 		sidebarContainer.appendChild(cr);
 		
-		console.log(cr);
+		// console.log(cr);
 
 	}
 }
