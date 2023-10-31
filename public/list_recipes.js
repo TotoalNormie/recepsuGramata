@@ -13,7 +13,9 @@ function DisplayRecipes()
 
 
 	// loop of all selected reicpes
-	for(recipe of RecipeList) {
+	for(let i = 0; i < RecipeList.length; ++i) {
+		let recipe = RecipeList[i];
+				
 		if(recipe.hidden)
 			continue;
 
@@ -24,6 +26,21 @@ function DisplayRecipes()
 		cr.querySelector('img').alt = recipe.title + ' attēls';
 		cr.querySelector('h2').textContent = recipe.title;
 		cr.querySelector('span').textContent = recipe.views;
+
+		let saveButton = cr.querySelector('button.Saglabat')
+		if(recipe.bookmarked)
+			saveButton.classList.add("saved");
+
+		saveButton.addEventListener("click", function()
+		{
+			GenericRequest("/backend/bookmarks.php", saveButton.classList.toggle("saved") ? "PUT" : "DELETE", function()
+			{
+				
+			},
+			{
+				recipe_id: recipe.ID
+			});
+		})
 
 		RecipeContainer.appendChild(cr);
 

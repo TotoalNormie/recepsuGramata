@@ -19,6 +19,10 @@
 				$recipe = $DB->GetRecipeByID($GetData["id"]);
 				if($recipe)
 				{
+					if($user_session)
+						if($DB->IsBookmarked($recipe["ID"], $user_session->user_id))
+							$recipe["bookmarked"] = true;
+
 					$DB->IncrementViewsByID($GetData["id"]);
 					++$recipe["views"];
 					exit(CreateResponse("Success", "Recipe Retrieved Succesfully", "data", $recipe));
@@ -42,11 +46,11 @@
 
 					$bookmarkCount = count($bookmarks);
 					$recipeIDList = array_column($recipes, "ID");
-
+					
 					for($i = 0; $i < $bookmarkCount; ++$i)
 					{
-						$index = array_search($bookmarks["recipe_id"], $recipeIDList);
-						if($index)
+						$index = array_search($bookmarks[$i]["ID"], $recipeIDList);
+						if($index !== false)
 							$recipes[$index]["bookmarked"] = true;
 					}
 				}

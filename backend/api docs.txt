@@ -28,6 +28,7 @@ ja visi, objektu masivs ar laukiem:
 	image_url
 	views
 ja viens, objekts ar laukiem:
+	id
 	title
 	description
 	image_url

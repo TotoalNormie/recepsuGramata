@@ -31,6 +31,20 @@ function DisplayRecipes()
 		cr.querySelector('h2').textContent = recipe.title;
 		cr.querySelector('span').textContent = recipe.views;
 
+		let saveButton = cr.querySelector('button.Saglabat')
+		saveButton.classList.add("saved");
+
+		saveButton.addEventListener("click", function()
+		{
+			GenericRequest("/backend/bookmarks.php", saveButton.classList.toggle("saved") ? "PUT" : "DELETE", function()
+			{
+				
+			},
+			{
+				recipe_id: recipe.ID
+			});
+		})
+
 		RecipeContainer.appendChild(cr);
 
 	}
