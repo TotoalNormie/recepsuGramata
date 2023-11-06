@@ -1,10 +1,10 @@
 <?php
 
-	$___user_id_salt = hash("sha512", "very unique salt");
-	$___user_stamp = hash("sha256", "mega secure user stamp");
-	$___admin_stamp = hash("sha256", "super secure admin hash");
-	$___encryption_key = hash("sha256", "mega super duper secure key (secret)");
-	$___encryption_iv = substr(hash("sha512", "this doesnt really matter"), 0, 16);
+	$___user_id_salt = hash("sha512", "1c3df731bcbd15dc6a7a4c5200741442c82199bad01f5");
+	$___user_stamp = hash("sha256", "2bb9c81abda8851773df23af896b4bdf18d999ce59a9f");
+	$___admin_stamp = hash("sha256", "3d6f2f5f7b084c1d31f5394e8359472a9c3a807420709");
+	$___encryption_key = hash("sha256", "059e5b758d7ea1663b4bcc847dd454815ea828f8e90e1");
+	$___encryption_iv = substr(hash("sha512", "fee7f9fb8bfd1033d576b85ffd53915af9a14702aeac5"), 0, 16);
 
 	enum SessionAuthority
 	{
@@ -77,7 +77,7 @@
 			global $___encryption_key;
 			global $___encryption_iv;
 	
-			return openssl_encrypt($this->user_id . "|" . $this->expire_time . "|" . $this->stamp, "aes-256-cbc", $___encryption_key, 0, $___encryption_iv);
+			return openssl_encrypt($this->user_id . "|" . $this->expire_time . "|" . $this->stamp, "aes-256-ccm", $___encryption_key, 0, $___encryption_iv);
 		}
 
 		static public function FromToken($token)
