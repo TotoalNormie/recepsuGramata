@@ -4,26 +4,29 @@ function GenericRequest(url, method, onLoadEnd, body=null, contentType="applicat
 	{
 		let request = new XMLHttpRequest();
 		request.open(method, url);
-		if(contentType !== null)
-			request.setRequestHeader("Content-Type", contentType);
 
 		request.addEventListener("loadend", onLoadEnd);
 		let requestBody = "";
 		if(body !== null)
 		{
-			if(contentType === "application/x-www-form-urlencoded")
+			if(contentType != null)
 			{
-				for(const name in body)
-					requestBody += encodeURIComponent(name) + "=" + encodeURIComponent(body[name]) + "&";
+				request.setRequestHeader("Content-Type", contentType);
 
-				requestBody = requestBody.substr(0, requestBody.length - 1);
+				if(contentType === "application/x-www-form-urlencoded")
+				{
+					for(const name in body)
+						requestBody += encodeURIComponent(name) + "=" + encodeURIComponent(body[name]) + "&";
+
+					requestBody = requestBody.substr(0, requestBody.length - 1);
+				}
+				else if(contentType === "application/json")
+				{
+					requestBody = JSON.stringify(body);
+				}
+				else
+					throw "unsupported content type";
 			}
-			else if(contentType === "application/json")
-			{
-				requestBody = JSON.stringify(body);
-			}
-			else
-				throw "unsupported content type";
 		}
 
 		request.send(requestBody);
