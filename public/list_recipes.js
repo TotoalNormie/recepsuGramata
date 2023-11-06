@@ -34,7 +34,7 @@ function DisplayRecipes()
 
 		saveButton.addEventListener("click", function()
 		{
-			GenericRequest("/backend/bookmarks.php", saveButton.classList.toggle("saved") ? "PUT" : "DELETE", function()
+			GenericRequest("../backend/bookmarks.php", saveButton.classList.toggle("saved") ? "PUT" : "DELETE", function()
 			{
 				
 			},
