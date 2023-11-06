@@ -101,17 +101,14 @@ document.querySelector("button#submit").addEventListener("click", function()
 		};
 	}
 	
-	GenericRequest("/recipes.php", "PUT", function()
+	GenericRequest("/backend/recipes.php", "PUT", function()
 	{
 		if(this.responseText)
 		{
 			let response = ParseJSON(this.responseText);
 			if(response)
-			{
-				if(response.status == "Success")
-				{
-					RequestOutput.innerText = response.message;
-				}
+			{				
+				RequestOutput.innerText = response.message;
 			}
 		}
 	},

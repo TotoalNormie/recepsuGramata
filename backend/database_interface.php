@@ -31,16 +31,24 @@
 			return $result->fetch_all(MYSQLI_ASSOC);
 		}
 		
-		public function ListRecipesWithLimit($limit, $sort = "") {
-			if($sort) $sort = "ORDER BY " .$sort ." DESC";
-			$result = $this->DB->query("SELECT ID, title, image_url, views FROM recipes $sort LIMIT $limit");
+		public function ListRecipesWithLimit($limit, $sort = "")
+		{
+			if($sort === "views") // || ...
+				$sort = "ORDER BY $sort DESC";
+			else
+				$sort = "ORDER BY views DESC";
 
-			return $result->fetch_all(MYSQLI_ASSOC);
+			$stmt = $this->DB->prepare("SELECT ID, title, image_url, views FROM recipes $sort LIMIT ?");
+
+			$stmt->bind_param("i", $limit);
+			$stmt->execute();
+
+			return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 		}
 
 		public function GetRecipeByID($id)
 		{
-			$stmt = $this->DB->prepare("SELECT title, description, image_url, views, ingredient_json FROM recipes WHERE ID=? LIMIT 1");
+			$stmt = $this->DB->prepare("SELECT ID, title, description, image_url, views, ingredient_json FROM recipes WHERE ID=? LIMIT 1");
 			
 			$stmt->bind_param("i", $id);
 			$stmt->execute();
@@ -178,8 +186,7 @@
 			$stmt = $this->DB->prepare("SELECT recipes.ID, recipes.title, recipes.image_url, recipes.views FROM ((recipes
 			                            INNER JOIN users ON users.identifier = ?)
 										INNER JOIN saved_recipes ON saved_recipes.user_id = users.ID)
-			                            WHERE recipes.ID = saved_recipes.recipe_id
-			                            LIMIT 1");
+			                            WHERE recipes.ID = saved_recipes.recipe_id");
 
 			$stmt->bind_param("s", $user_identifier);
 			$stmt->execute();
