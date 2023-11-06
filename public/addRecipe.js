@@ -101,7 +101,7 @@ document.querySelector("button#submit").addEventListener("click", function()
 		};
 	}
 	
-	GenericRequest("/backend/recipes.php", "PUT", function()
+	GenericRequest("../backend/recipes.php", "PUT", function()
 	{
 		if(this.responseText)
 		{
