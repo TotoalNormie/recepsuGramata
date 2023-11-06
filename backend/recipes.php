@@ -20,8 +20,7 @@
 				if($recipe)
 				{
 					if($user_session)
-						if($DB->IsBookmarked($recipe["ID"], $user_session->user_id))
-							$recipe["bookmarked"] = true;
+						$recipe["bookmarked"] = $DB->IsBookmarked($recipe["ID"], $user_session->user_id);
 
 					$DB->IncrementViewsByID($GetData["id"]);
 					++$recipe["views"];
