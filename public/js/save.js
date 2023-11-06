@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-	console.log('should work');
-
 	const Saglabat = document.querySelectorAll('button.Saglabat');
 	console.log(Saglabat);
 	Saglabat.forEach(Saglabat => {

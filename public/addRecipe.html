@@ -31,26 +31,23 @@
 			</select>
 			<button class="remove_ingredient"><i class="fa-solid fa-xmark"></i></button>
 		</template>
-		<header include="header.html">
-			<div class="hideButton">
-			  <button><i class="fa-solid fa-xmark"></i></button>
-			</div>
+		<header>
 			<a href="index.html">Receptes</a>
-			<a href="savedRecipes.html">Saglabtas receptes</a>
+			<a href="savedRecipes.html">Saglabātas receptes</a>
 			<a href="addRecipe.html">Pievienot recepti</a>
-			<a href="login.html">Log-in</a>
+			<a href="login.html">Pieslēgties</a>
 			<a href="register.html">Reģistrēties</a>
 		</header>
-		<div class="search"include="search.html">
-			<button class="hamburber">
-			  <div class="bar"></div>
+		<div class="search">
+			<button class="hamburber" onclick="hamburberButton()">
+				<div class="bar"></div>
 			</button>
-	  
+
 			<form id="searchBar">
-			  <input type="text" />
-			  <button><i class="fa-solid fa-magnifying-glass"></i></button>
+				<input type="text" />
+				<button><i class="fa-solid fa-magnifying-glass"></i></button>
 			</form>
-		  </div>
+		</div>
 		<main>
 			<div class="izveidot">
 				<label for="title">Nosaukums:</label>
@@ -81,11 +78,10 @@
 					cols="50"></textarea>
 				<span id="request_output"></span>
 				<button type="button" class="Poga" id="submit">Saglabat</button>
-			</form>
+			</div>
 		</main>
 		<script src="library.js"></script>
 		<script src="addRecipe.js"></script>
-		<script src="js/incluedHTML.js"></script>
 		<script src="js/hamburger.js"></script>
 	</body>
 </html>
