@@ -19,8 +19,8 @@ LoginForm.querySelector("button").addEventListener("click", function()
 		return;
 	}
 
-	GenericRequest("/backend/register.php", "POST", function()
-	{
+	GenericRequest("../backend/register.php", "POST", function()
+	{	console.log(this)
 		if(this.responseText)
 		{
 			let response = ParseJSON(this.responseText);

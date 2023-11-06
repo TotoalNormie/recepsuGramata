@@ -8,7 +8,7 @@ function hamburberButton() {
 	menu_btn.classList.toggle('is-active');
 	mobile_menu.classList.toggle('is-active');
 	changusCount++;
-	console.log('changus has been found ' + changusCount + ' times');
+	console.log('are the times changus has been found');
 }
 
 setTimeout(() => {
