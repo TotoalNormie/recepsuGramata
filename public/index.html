@@ -1,114 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="https://www.svgrepo.com/show/84264/recipes.svg" />
-    <link rel="stylesheet" href="style/main.css" />
-    <link rel="stylesheet" href="style/index.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Find Recipes</title>
-  </head>
-  <body>
-    <header include="header.html">
-      <a href="index.html">Receptes</a>
-      <a href="savedRecipes.html">Saglabtas receptes</a>
-      <a href="addRecipe.html">Pievienot recepti</a>
-      <a href="login.html">Log-in</a>
-      <a href="register.html">Reģistrēties</a>
-    </header>
-    <div class="search"include="search.html">
-			<button class="hamburber">
-			  <div class="bar"></div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="https://www.svgrepo.com/show/84264/recipes.svg" />
+		<link rel="stylesheet" href="style/main.css" />
+		<link rel="stylesheet" href="style/index.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+			integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer" />
+		<title>Find Recipes</title>
+	</head>
+	<body>
+		<header>
+			<a href="index.html">Receptes</a>
+			<a href="savedRecipes.html">Saglabātas receptes</a>
+			<a href="addRecipe.html">Pievienot recepti</a>
+			<a href="login.html">Pieslēgties</a>
+			<a href="register.html">Reģistrēties</a>
+		</header>
+		<div class="search" include="search.html">
+			<button class="hamburber" onclick="hamburberButton()">
+				<div class="bar"></div>
 			</button>
-	  
+
 			<form id="searchBar">
-			  <input type="text" />
-			  <button><i class="fa-solid fa-magnifying-glass"></i></button>
+				<input type="text" />
+				<button><i class="fa-solid fa-magnifying-glass"></i></button>
 			</form>
-		  </div>
-    <main>
-      <h1>RECEPTES</h1>
-      <template id="recepieTemplate">
-        <a href="" class="item">
-          <img src="" alt="" />
-          <div class="details">
-            <h2></h2>
-            <div class="views">
-              <span></span>
-              <i class="fa-solid fa-eye"></i>
-            </div>
-            <button class="Saglabat">
-              <i class="fa-regular fa-bookmark"></i>
-            </button>
-          </div>
-        </a>
-      </template>
-      <div class="wrapper">
-        <a href="" class="item">
-          <img
-            src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg"
-            alt=""
-          />
-          <div class="details">
-            <h2>macaroni-cheese</h2>
-            <div class="views">
-              <span>486</span>
-              <i class="fa-solid fa-eye"></i>
-            </div>
-            <button class="Saglabat">
-              <i class="fa-regular fa-bookmark"></i>
-            </button>
-          </div>
-        </a>
-        <div class="item">
-          <img
-            src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg"
-          />
-          <p1>Macaroni and Cheese</p1>
-        </div>
-        <div class="item">
-          <img
-            src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg"
-          />
-          <p1>Macaroni and Cheese</p1>
-        </div>
-        <div class="item">
-          <img
-            src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg"
-          />
-          <p1>Macaroni and Cheese</p1>
-        </div>
-        <div class="item">
-          <img
-            src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg"
-          />
-          <p1>Macaroni and Cheese</p1>
-        </div>
-        <div class="item">
-          <img
-            src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg"
-          />
-          <p1>Macaroni and Cheese</p1>
-        </div>
-        <div class="item">
-          <img
-            src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg"
-          />
-          <p1>Macaroni and Cheese</p1>
-        </div>
-      </div>
-      <script src="library.js"></script>
-      <script src="list_recipes.js"></script>
-      <script src="js/save.js"></script>
-      <script src="js/incluedHTML.js"></script>
-	  <script src="js/hamburger.js"></script>
-    </main>
-  </body>
+		</div>
+		<main>
+			<h1>RECEPTES</h1>
+			<template id="recepieTemplate">
+				<a href="" class="item">
+					<img src="" alt="" />
+					<div class="details">
+						<h2></h2>
+						<div class="views">
+							<span></span>
+							<i class="fa-solid fa-eye"></i>
+						</div>
+						<button class="Saglabat">
+							<i class="fa-regular fa-bookmark"></i>
+						</button>
+					</div>
+				</a>
+			</template>
+			<div class="wrapper">
+				<a href="" class="item">
+					<img
+						src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg"
+						alt="" />
+					<div class="details">
+						<h2>macaroni-cheese</h2>
+						<div class="views">
+							<span>486</span>
+							<i class="fa-solid fa-eye"></i>
+						</div>
+						<button class="Saglabat">
+							<i class="fa-regular fa-bookmark"></i>
+						</button>
+					</div>
+				</a>
+				<div class="item">
+					<img
+						src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg" />
+					<p1>Macaroni and Cheese</p1>
+				</div>
+				<div class="item">
+					<img
+						src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg" />
+					<p1>Macaroni and Cheese</p1>
+				</div>
+				<div class="item">
+					<img
+						src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg" />
+					<p1>Macaroni and Cheese</p1>
+				</div>
+				<div class="item">
+					<img
+						src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg" />
+					<p1>Macaroni and Cheese</p1>
+				</div>
+				<div class="item">
+					<img
+						src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg" />
+					<p1>Macaroni and Cheese</p1>
+				</div>
+				<div class="item">
+					<img
+						src="https://sugarspunrun.com/wp-content/uploads/2023/03/Easy-mac-and-cheese-recipe-1-of-1.jpg" />
+					<p1>Macaroni and Cheese</p1>
+				</div>
+			</div>
+			<script src="library.js"></script>
+			<script src="list_recipes.js"></script>
+			<script src="js/save.js"></script>
+			<script src="js/hamburger.js"></script>
+		</main>
+	</body>
 </html>

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" href="https://www.svgrepo.com/show/84264/recipes.svg">
+		<link rel="icon" href="https://www.svgrepo.com/show/84264/recipes.svg" />
 		<link rel="stylesheet" href="style/main.css" />
 		<link rel="stylesheet" href="style/recepie.css" />
 		<link
@@ -15,33 +15,28 @@
 		<title>Recepie</title>
 	</head>
 	<body>
-		<header include="header.html">
-			<div class="hideButton">
-				<button><i class="fa-solid fa-xmark"></i></button>
-			</div>
+		<header>
 			<a href="index.html">Receptes</a>
-			<a href="savedRecipes.html">Saglabtas receptes</a>
+			<a href="savedRecipes.html">Saglabātas receptes</a>
 			<a href="addRecipe.html">Pievienot recepti</a>
-			<a href="login.html">Log-in</a>
+			<a href="login.html">Pieslēgties</a>
 			<a href="register.html">Reģistrēties</a>
 		</header>
-		<div class="search"include="search.html">
-			<button class="hamburber">
-			  <div class="bar"></div>
+		<div class="search" include="search.html">
+			<button class="hamburber" onclick="hamburberButton()">
+				<div class="bar"></div>
 			</button>
-	  
+
 			<form id="searchBar">
-			  <input type="text" />
-			  <button><i class="fa-solid fa-magnifying-glass"></i></button>
+				<input type="text" />
+				<button><i class="fa-solid fa-magnifying-glass"></i></button>
 			</form>
-		  </div>
+		</div>
 
 		<main>
 			<template id="recipeTemplate">
 				<div>
-					<img
-						src=""
-						alt="" />
+					<img src="" alt="" />
 				</div>
 				<div class="item details">
 					<h2></h2>
@@ -55,9 +50,7 @@
 				</div>
 				<div class="item">
 					<h2>Ingridienti:</h2>
-					<ul>
-
-					</ul>
+					<ul></ul>
 				</div>
 				<div class="item">
 					<p></p>
@@ -133,7 +126,6 @@
 				<button class="seeMore" onclick="seeMore()">Redzēt vairāk...</button>
 			</div>
 		</main>
-		<script src="js/incluedHTML.js"></script>
 		<script src="library.js"></script>
 		<script src="js/recipe.js"></script>
 		<script src="js/hamburger.js"></script>

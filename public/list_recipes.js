@@ -2,6 +2,7 @@ let RecipeContainer = document.querySelector(".wrapper");
 const recipeTemplate = document.getElementById('recepieTemplate');
 
 let SearchBar = document.querySelector("#searchBar > input[type=\"text\"]");
+console.log(SearchBar);
 
 let RecipeList = [];
 
@@ -15,7 +16,6 @@ function DisplayRecipes()
 		if(recipe.hidden)
 			continue;
 
-		console.log(recipe);
 		const cr = recipeTemplate.content.cloneNode(true); // cloned recipe, shortened for conviniance
 
 		cr.querySelector('a').href = 'recipe.html?id=' + recipe.ID;
@@ -25,9 +25,6 @@ function DisplayRecipes()
 		cr.querySelector('span').textContent = recipe.views;
 
 		RecipeContainer.appendChild(cr);
-		
-		console.log(cr);
-
 	}
 	// for(let i = 0; i < RecipeList.length; ++i)
 	// {
@@ -46,6 +43,7 @@ function DisplayRecipes()
 function FilterAndLoad()
 {
 	let searchValue = SearchBar.value;
+	console.log(searchValue);
 	for(let i = 0; i<RecipeList.length; ++i)
 	{
 		let thisRecipe = RecipeList[i]; // indexed array lookups are expensive
