@@ -24,6 +24,7 @@
 
 					$DB->IncrementViewsByID($GetData["id"]);
 					++$recipe["views"];
+					
 					exit(CreateResponse("Success", "Recipe Retrieved Succesfully", "data", $recipe));
 				}
 				else
