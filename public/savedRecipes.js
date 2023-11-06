@@ -1,8 +1,13 @@
+if(!GetCookie("token"))
+{
+	alert("You need to be logged in to view saved recipes");
+	window.location.href = "index.html";
+}
+
 let RecipeContainer = document.querySelector(".wrapper");
 const recipeTemplate = document.getElementById('recepieTemplate');
 
 let SearchBar = document.querySelector("#searchBar > input[type=\"text\"]");
-console.log(SearchBar);
 
 let ViewSorting = {value: "DESC"}; // value: "DESC" | value: "none"
 
@@ -16,7 +21,7 @@ function DisplayRecipes()
 	// loop of all selected reicpes
 	for(let i = 0; i < RecipeList.length; ++i) {
 		let recipe = RecipeList[i];
-
+		
 		if(recipe.hidden)
 			continue;
 
@@ -29,8 +34,7 @@ function DisplayRecipes()
 		cr.querySelector('span').textContent = recipe.views;
 
 		let saveButton = cr.querySelector('button.Saglabat')
-		if(recipe.bookmarked)
-			saveButton.classList.add("saved");
+		saveButton.classList.add("saved");
 
 		saveButton.addEventListener("click", function()
 		{
@@ -46,6 +50,18 @@ function DisplayRecipes()
 		RecipeContainer.appendChild(cr);
 
 	}
+	// for(let i = 0; i < RecipeList.length; ++i)
+	// {
+	// 	let recipeElement = RecipeContainer.appendChild(document.createElement("div"));
+	// 	recipeElement.className = "item";
+
+
+	// 	let recipeImage = recipeElement.appendChild(document.createElement("img"));
+	// 	console.log(recipeImage.src = RecipeList[i].image_url);		
+
+	// 	let recipeTitle = recipeElement.appendChild(document.createElement("p1"));
+	// 	recipeTitle.innerText = RecipeList[i].title;
+	// }
 }
 
 function SortRecipes()
@@ -105,7 +121,7 @@ SearchBar.addEventListener("input", FilterAndLoad);
 
 function UpdateRecipes()
 {
-	GenericRequest("../backend/recipes.php", "GET", function()
+	GenericRequest("../backend/bookmarks.php", "GET", function()
 	{
 		if(this.responseText)
 		{
@@ -115,7 +131,7 @@ function UpdateRecipes()
 				if(response.status == "Success")
 				{
 					RecipeList = response.data;
-					
+
 					SortRecipes();
 					FilterAndLoad();
 				}

@@ -15,7 +15,7 @@
 			if($user_session === false)
 				exit(CreateResponse("Failure", "Please Authenticate Yourself"));
 			
-			exit(CreateResponse("Success", "Recipes Retrieved Succesfully", "data", $DB->GetBookmarkedRecipes($user_session->user_id)));
+			exit(CreateResponse("Success", "Bookmarks Retrieved Succesfully", "data", $DB->GetBookmarkedRecipes($user_session->user_id)));
 		}
 		catch(Exception $e)
 		{

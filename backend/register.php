@@ -15,8 +15,6 @@
 				{
 					$user_id = GenerateUserID($_POST["user"], $_POST["pass"]);
 					$DB->RegisterUser($_POST["user"], $user_id); // if this fails an exception will be raised
-
-					header("Location: /");
 										
 					$expire_time = time() + 60 * 60 * 10; // 10 hours
 					setcookie("token",
@@ -25,7 +23,7 @@
 							$expire_time,
 							SessionAuthority::USER
 						))->ToToken(),
-					$expire_time);
+					$expire_time, "/");
 
 					exit(CreateResponse("Success", "Account Registered Succesfully"));
 				}
