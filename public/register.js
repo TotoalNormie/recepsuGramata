@@ -19,7 +19,7 @@ LoginForm.querySelector("button").addEventListener("click", function()
 		return;
 	}
 
-	GenericRequest("/backend/register.php", "POST", function()
+	GenericRequest("../backend/register.php", "POST", function()
 	{
 		if(this.responseText)
 		{

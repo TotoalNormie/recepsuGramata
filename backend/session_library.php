@@ -93,7 +93,8 @@
 			if(intval($data[1]) <= time())
 				return false;	
 			
-			$authority = StampToEnum($data[2]);
+			if(!($authority = StampToEnum($data[2])))
+				return false;
 			
 			return new Session($data[0], $data[1], $authority);
 		}
