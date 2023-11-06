@@ -2,7 +2,6 @@ let RecipeContainer = document.querySelector(".wrapper");
 const recipeTemplate = document.getElementById('recepieTemplate');
 
 let SearchBar = document.querySelector("#searchBar > input[type=\"text\"]");
-console.log(SearchBar);
 
 let ViewSorting = {value: "DESC"}; // value: "DESC" | value: "none"
 
