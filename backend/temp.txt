@@ -2,21 +2,56 @@ CREATE TABLE IF NOT EXISTS ingredients(
 	ID int PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(32) NOT NULL,
 	amount int NOT NULL,
-	value VARCHAR(8) NOT NULL,
+	measurement VARCHAR(8) NOT NULL,
 	recipe_id int NOT NULL,
 
 	FOREIGN KEY(recipe_id) REFERENCES recipes(ID) ON DELETE CASCADE
 );
+
 <?php
 function ValidIngredients($ingredients)
 {
   $ingredient_count = count($ingredients);
+  if($ingredient_count < 1)
+	return false;
+
   for($i = 0; $i < $ingredient_count; ++$i)
     if(!(isset($ingredients[i]["name"]) && gettype($ingredients[i]["name"]) === "string" && 
 	     isset($ingredients[i]["measurement"]) && gettype($ingredients[i]["measurement"]) === "string" &&
-	     isset($ingredients[i]["amount"]) && is_numeric($ingredients[i]["amount"]) && $ingredients[i]["amount"] > 0))
+	     isset($ingredients[i]["amount"]) && gettype($ingredients[i]["amount"]) === "integer" && $ingredients[i]["amount"] > 0))
       return false;
 
   return true;
+}
+
+// this assumes $ingredients have already been validated
+function BuildIngredientQuery($ingredients)
+{
+	$output = [
+		"query" => "INSERT INTO ingredients(name, amount, measurement) VALUES ",
+		"param_types" => "",
+		"param_list" => []
+	];
+
+	$ingredient_count = count($ingredients);
+	
+	$output["param_types"] = str_repeat("sds", $ingredient_count);
+	$output["query"] += rtrim(str_repeat("(?, ?, ?),", $ingredient_count), ",");
+
+  	for($i = 0; $i < $ingredient_count; ++$i)
+	{
+		$output["param_list"][] = $ingredients[$i]["name"];
+		$output["param_list"][] = $ingredients[$i]["amount"];
+		$output["param_list"][] = $ingredients[$i]["measurement"];
+	}
+}
+
+public function CreateRecipe($title, $description, $image_url, $ingredient_json, $owner_user_identifier)
+{
+	$stmt = $this->DB->prepare("INSERT INTO recipes(title, description, image_url, ingredient_json, owner)
+	                            SELECT ?, ?, ?, ?, ID AS owner FROM users WHERE identifier=?");			
+	
+	$stmt->bind_param("sssss", $title, $description, $image_url, $ingredient_json, $owner_user_identifier);
+	$stmt->execute();
 }
 ?>
