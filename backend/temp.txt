@@ -57,6 +57,13 @@ public function UploadIngredients($recipe_id, $ingredients)
 	$stmt->execute();
 }
 
+public function GetTopRecipe()
+{
+	$this->DB->query("SELECT MAX(ID) FROM recipes");
+
+	return $this->DB->fetch_array(MYSQLI_NUM)[0];
+}
+
 public function CreateRecipe($title, $description, $image_url, $ingredients, $owner_user_identifier)
 {
 	$stmt = $this->DB->prepare("INSERT INTO recipes(title, description, image_url, owner)
@@ -65,6 +72,8 @@ public function CreateRecipe($title, $description, $image_url, $ingredients, $ow
 	
 	$stmt->bind_param("sssss", $title, $description, $image_url, $owner_user_identifier);
 	$stmt->execute();
+
+	UploadIngredients($this->GetTopRecipe(), $ingredients);
 }
 
 public function ClearIngredients($recipe_id)
