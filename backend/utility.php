@@ -41,7 +41,7 @@
 		else
 			$out = $decodedJson;
 
-		foreach($_GET as $key => $value) // more code to get around the retarded restrictions of web standards
+		foreach($_GET as $key => $value)
 		{
 			$out[$key] = $value;
 		}
