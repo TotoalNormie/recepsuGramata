@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS ingredients(
+	ID int PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(32) NOT NULL,
+	amount int NOT NULL,
+	value VARCHAR(8) NOT NULL,
+	recipe_id int NOT NULL,
+
+	FOREIGN KEY(recipe_id) REFERENCES recipes(ID) ON DELETE CASCADE
+);
+
+function ValidIngredients($ingredients)
+{
+  $ingredient_count = count($ingredients);
+  for($i = 0; $i < $ingredient_count; ++$i)
+    if($ingredient)
+      return false;
+
+  return true;
+}
