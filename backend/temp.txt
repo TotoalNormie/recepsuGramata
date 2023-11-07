@@ -25,33 +25,53 @@ function ValidIngredients($ingredients)
 }
 
 // this assumes $ingredients have already been validated
-function BuildIngredientQuery($ingredients)
+function BuildIngredientQuery($recipe_id, $ingredients)
 {
 	$output = [
-		"query" => "INSERT INTO ingredients(name, amount, measurement) VALUES ",
+		"query" => "INSERT INTO ingredients(name, amount, measurement, recipe_id) VALUES ",
 		"param_types" => "",
 		"param_list" => []
 	];
 
 	$ingredient_count = count($ingredients);
-	
-	$output["param_types"] = str_repeat("sds", $ingredient_count);
-	$output["query"] += rtrim(str_repeat("(?, ?, ?),", $ingredient_count), ",");
+
+	$output["param_types"] = str_repeat("sdsi", $ingredient_count);
+	$output["query"] += rtrim(str_repeat("(?, ?, ?, ?),", $ingredient_count), ",");
 
   	for($i = 0; $i < $ingredient_count; ++$i)
 	{
 		$output["param_list"][] = $ingredients[$i]["name"];
 		$output["param_list"][] = $ingredients[$i]["amount"];
 		$output["param_list"][] = $ingredients[$i]["measurement"];
+		$output["param_list"][] = $recipe_id;
 	}
 }
 
-public function CreateRecipe($title, $description, $image_url, $ingredient_json, $owner_user_identifier)
+public function UploadIngredients($recipe_id, $ingredients)
 {
-	$stmt = $this->DB->prepare("INSERT INTO recipes(title, description, image_url, ingredient_json, owner)
-	                            SELECT ?, ?, ?, ?, ID AS owner FROM users WHERE identifier=?");			
+	$ingredient_query_data = BuildIngredientQuery($recipe_id, $ingredients);
+
+	$stmt = $this->DB->prepare($ingredient_query_data["query"]);
+
+	$stmt->bind_param($ingredient_query_data["param_types"], ...$output["param_list"]);
+	$stmt->execute();
+}
+
+public function CreateRecipe($title, $description, $image_url, $ingredients, $owner_user_identifier)
+{
+	$stmt = $this->DB->prepare("INSERT INTO recipes(title, description, image_url, owner)
+	                            SELECT ?, ?, ?, ID AS owner FROM users WHERE identifier=?");			
 	
-	$stmt->bind_param("sssss", $title, $description, $image_url, $ingredient_json, $owner_user_identifier);
+	
+	$stmt->bind_param("sssss", $title, $description, $image_url, $owner_user_identifier);
+	$stmt->execute();
+}
+
+public function ClearIngredients($recipe_id)
+{
+	$stmt = $this->DB->prepare("DELETE FROM ingredients WHERE recipe_id=?");			
+		
+	$stmt->bind_param("i", $recipe_id);
 	$stmt->execute();
 }
 ?>
