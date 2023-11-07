@@ -7,13 +7,16 @@ CREATE TABLE IF NOT EXISTS ingredients(
 
 	FOREIGN KEY(recipe_id) REFERENCES recipes(ID) ON DELETE CASCADE
 );
-
+<?php
 function ValidIngredients($ingredients)
 {
   $ingredient_count = count($ingredients);
   for($i = 0; $i < $ingredient_count; ++$i)
-    if($ingredient)
+    if(!(isset($ingredients[i]["name"]) && gettype($ingredients[i]["name"]) === "string" && 
+	     isset($ingredients[i]["measurement"]) && gettype($ingredients[i]["measurement"]) === "string" &&
+	     isset($ingredients[i]["amount"]) && is_numeric($ingredients[i]["amount"]) && $ingredients[i]["amount"] > 0))
       return false;
 
   return true;
 }
+?>
