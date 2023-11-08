@@ -77,7 +77,7 @@
 			global $___encryption_key;
 			global $___encryption_iv;
 	
-			return openssl_encrypt($this->user_id . "|" . $this->expire_time . "|" . $this->stamp, "aes-256-ccm", $___encryption_key, 0, $___encryption_iv);
+			return openssl_encrypt($this->user_id . "|" . $this->expire_time . "|" . $this->stamp, "aes-256-cbc", $___encryption_key, 0, $___encryption_iv);
 		}
 
 		static public function FromToken($token)
